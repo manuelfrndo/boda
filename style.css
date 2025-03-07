@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f8f0e3;
+}
+header {
+    background: #d4a373;
+    color: white;
+    padding: 20px;
+}
+#countdown {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    color: #b56576;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+input, button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+button {
+    background: #b56576;
+    color: white;
+    cursor: pointer;
+}
+button:hover {
+    background: #944b61;
+}
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: #d4a373;
+    color: white;
+}
+#our-story {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background: #fff5e1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#our-story img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+nav {
+    background-color: #d4a373;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 80%;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #b56576;
+}
