@@ -4,7 +4,7 @@ document.getElementById("rsvpForm").addEventListener("submit", function(event) {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
 
-    var url = "URL-DE-TU-APLICACION-WEB"; // 🔹 Reemplaza con la URL copiada de Google Apps Script
+    var url = "https://script.google.com/macros/s/AKfycbwu2sjoRMNQKLhxA0CCf9cAJH7nfwotVt5eUuoO6HWsPySWfJMEVYYGf4HpPAMkFfHf/exec"; // 🔹 Reemplaza con la URL copiada de Google Apps Script
 
     fetch(url, {
         method: "POST",
