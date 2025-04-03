@@ -12,22 +12,128 @@
         body {
             font-family: 'Dancing Script', cursive;
         }
+        #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;    /* El contenedor ocupa toda la pantalla */
+        height: 100%;   /* El contenedor ocupa toda la pantalla */
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 1s ease;
+        }
+
+        #preloader img {
+        /* Ajusta el ancho que quieras para la imagen */
+        width: 300px;
+        height: auto; 
+        /* O bien: max-width: 50%; si prefieres un porcentaje */
+        }
+        .header-content {
+            max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        #preloader.hidden {
+        opacity: 0;
+        pointer-events: none;
+        }
+            /* Estilos para el menú lateral */
+        .side-nav {
+        height: 100%;           /* Ocupa toda la altura de la ventana */
+        width: 0;               /* Empieza cerrado */
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #ffffff; /* Color de fondo del menú */
+        overflow-x: hidden;     /* Sin scroll horizontal */
+        transition: 0.5s;       /* Animación de apertura/cierre */
+        padding-top: 60px;      /* Espacio superior */
+        z-index: 9999;          /* Por encima del contenido */
+        }
+        .side-nav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+        }
+        .side-nav a:hover {
+        background-color: #c56868;
+        }
+        .side-nav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        text-decoration: none;
+        }
+
+        /* Botón flotante para abrir el menú, unido al lado izquierdo */
+        .floating-menu-btn {
+        position: fixed;
+        left: 0;
+        top: 10%; /* Centrado verticalmente */
+        transform: translateY(-50%);
+        background-color: #ffffff;
+        color: #000000;
+        border: none;
+        padding: 15px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        cursor: pointer;
+        z-index: 10000;
+        }
+
+
     </style>
 </head>
-<body>
-    <header>
-        <h1>Nuestra Historia</h1>
-        <nav>
-            <a href="index.html">Inicio</a> | 
-            <a href="historia.html">Nuestra Historia</a> | 
+<body preloader onload="ocultarPreloader()">
+
+    <!-- Contenedor del preloader -->
+    <div id="preloader">
+      <!-- Ajusta la ruta de la imagen si es necesario -->
+      <img src="https://imgur.com/a/fZXJoci" alt="Preloader - Había una vez" />
+    </div>
+    <!-- Botón flotante para abrir el menú -->
+    <button class="floating-menu-btn" onclick="openNav()">&#9776;</button>
+
+    <!-- Menú lateral -->
+    <div id="sideNav" class="side-nav">
+        <!-- Botón para cerrar el menú -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <!-- Enlaces del menú -->
+        <a href="#home">Inicio</a>
+        <a href="historia.html">Nuestra Historia</a>
+        <a href="#details">Detalles del Evento</a>
+        <a href="#rsvp">Confirma tu Asistencia</a>
+    </div>
+
+    <header id="home">
+        <nav aria-label="Menú principal">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="historia.html">Nuestra Historia</a></li>
+          </ul>
         </nav>
-        <h1>Manuel & Naara</h1>
-        <p>Nos casamos el <strong>enero de 2026</strong> 🎉</p>
-        <div id="countdown"></div>
-    </header>
-    <button onclick="document.getElementById('musica').play()">Reproducir música</button>
-
-
+        <div class="header-content">
+          <h1>Manuel & Naara</h1>
+          <h2>¡Nos casamos!</h2>
+          <blockquote>
+            <p>
+              "El amor es sufrido, es benigno; el amor no tiene envidia, el amor no es jactancioso, no se envanece; no hace nada indebido, no busca lo suyo, no se irrita, no guarda rencor; no se goza de la injusticia, mas se goza de la verdad. Todo lo sufre, todo lo cree, todo lo espera, todo lo soporta. El amor nunca deja de ser."
+            </p>
+            <footer>(1 Corintios 13:4-8a, Reina-Valera 1960)</footer>
+          </blockquote>
+          <div id="countdown"></div>
+        </div>
+      </header>
+      
 
     <section id="details">
         <h2>Detalles del Evento</h2>
@@ -46,12 +152,30 @@
         </form>
         <p id="responseMessage"></p>
     </section>
-    <audio id="musica" loop>
-      <source src="https://limewire.com/d/n4f3d#7Vst9B0wnJ" type="audio/mpeg">
-    </audio>
 
     <footer>
         <p>Con mucho amor, Manuel & Naara ❤️</p>
     </footer>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.classList.add('hidden');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 1000);
+            }, 2000);
+        });
+    </script>  
+    <script>
+    function openNav() {
+        document.getElementById("sideNav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("sideNav").style.width = "0";
+    }
+    </script>
+
 </body>
 </html>
