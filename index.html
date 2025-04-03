@@ -89,7 +89,24 @@
         cursor: pointer;
         z-index: 10000;
         }
-
+        .map-container {
+          position: relative;
+          width: 100%;
+          max-width: 600px; /* Ajusta el ancho máximo si lo deseas */
+          margin: 0 auto;   /* Centra el contenedor en la página */
+          padding-bottom: 56.25%; /* Relación de aspecto 16:9 (100% / 16 * 9) */
+          height: 0;       /* Para crear el espacio vertical en proporción */
+          overflow: hidden; 
+        }
+        
+        .map-container iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;  /* Se ajusta al ancho del contenedor */
+          height: 100%; /* Se ajusta a la altura del contenedor */
+          border: 0;
+        }
 
     </style>
 </head>
@@ -136,11 +153,17 @@
       
 
     <section id="details">
-        <h2>Detalles del Evento</h2>
-        <p><strong>Fecha:</strong> Enero 2026</p>
-        <p><strong>Lugar:</strong> [Ubicación de la boda]</p>
-        <p><strong>Vestimenta:</strong> [Código de vestimenta]</p>
-        <iframe src="https://www.google.com/maps/embed?..." width="600" height="450" style="border:0;" allowfullscreen></iframe>
+      <h2>Detalles del Evento</h2>
+      <p><strong>Fecha:</strong> Enero 2026</p>
+      <p><strong>Lugar:</strong> [Ubicación de la boda]</p>
+      <p><strong>Vestimenta:</strong> [Código de vestimenta]</p>
+    
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?..."
+          allowfullscreen
+        ></iframe>
+      </div>
     </section>
     
     <section id="rsvp">
