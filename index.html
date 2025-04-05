@@ -165,13 +165,24 @@
         ></iframe>
       </div>
     </section>
-    <audio controls autoplay loop>
+    <!--<audio controls autoplay loop>
       <source src="https://res.cloudinary.com/dhpjuny3p/video/upload/v1743700326/Where_no_one_goes_-_J%C3%B3nsi_sub_espa%C3%B1ol_C%C3%B3mo_entrenar_a_tu_drag%C3%B3n_2_gntuph.mp3" type="audio/mpeg">
       Tu navegador no soporta audio HTML5.
-    </audio>
-    <!--<audio autoplay loop muted preload="auto">
-    <source src="https://docs.google.com/uc?export=download&id=1SRiyA95Y5VKrs4x9GZKZOpd2mIk387a9" type="audio/mpeg">
     </audio>-->
+    <!--<audio autoplay loop muted preload="auto">
+    <source src="https://res.cloudinary.com/dhpjuny3p/video/upload/v1743700326/Where_no_one_goes_-_J%C3%B3nsi_sub_espa%C3%B1ol_C%C3%B3mo_entrenar_a_tu_drag%C3%B3n_2_gntuph.mp3" type="audio/mpeg">
+    </audio>-->
+    <audio id="bg-music" autoplay loop muted>
+       <source src="https://res.cloudinary.com/dhpjuny3p/video/upload/v1743700326/Where_no_one_goes_-_J%C3%B3nsi_sub_espa%C3%B1ol_C%C3%B3mo_entrenar_a_tu_drag%C3%B3n_2_gntuph.mp3" type="audio/mpeg">
+    </audio>
+    <!--scrip audio-->
+    <script>
+      window.addEventListener('click', function () {
+        const audio = document.getElementById('bg-music');
+        audio.muted = false;
+        audio.play();
+      }, { once: true });
+    </script>
     
     <section id="rsvp">
         <h2>Confirma tu Asistencia</h2>
@@ -205,6 +216,14 @@
     function closeNav() {
         document.getElementById("sideNav").style.width = "0";
     }
+    </script>
+    <!--scrip audio-->
+    <script>
+      window.addEventListener('click', function () {
+        const audio = document.getElementById('bg-music');
+        audio.muted = false;
+        audio.play();
+      }, { once: true });
     </script>
 
 </body>
