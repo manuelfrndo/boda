@@ -3,228 +3,734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel & Naara - Nuestra Boda</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <!-- Fuente romántica de Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <title>Nuestra Luna de Miel - Lista de Experiencias</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-light: #f8f9fa;
+            --bg-dark: #0a0e27;
+            --text-light: #1a1a2e;
+            --text-dark: #e4e4e7;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
         body {
-            font-family: 'Dancing Script', cursive;
-        }
-        #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;    /* El contenedor ocupa toda la pantalla */
-        height: 100%;   /* El contenedor ocupa toda la pantalla */
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 1s ease;
+            font-family: 'Georgia', serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
         }
 
-        #preloader img {
-        /* Ajusta el ancho que quieras para la imagen */
-        width: 300px;
-        height: auto; 
-        /* O bien: max-width: 50%; si prefieres un porcentaje */
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-dark);
         }
-        .header-content {
-            max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 12px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            animation: wave 15s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-family: 'Arial', sans-serif;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 80px 20px;
+            overflow-x: auto;
+            background: var(--bg-light);
+        }
+
+        body.dark-mode .timeline-section {
+            background: var(--bg-dark);
+        }
+
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+        }
+
+        .timeline-container {
+            display: flex;
+            gap: 40px;
+            padding: 40px;
+            min-width: max-content;
+        }
+
+        .timeline-item {
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        body.dark-mode .timeline-item {
+            background: #1e293b;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Arial', sans-serif;
+            color: inherit;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Experience Grid */
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        #preloader.hidden {
-        opacity: 0;
-        pointer-events: none;
-        }
-            /* Estilos para el menú lateral */
-        .side-nav {
-        height: 100%;           /* Ocupa toda la altura de la ventana */
-        width: 0;               /* Empieza cerrado */
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #ffffff; /* Color de fondo del menú */
-        overflow-x: hidden;     /* Sin scroll horizontal */
-        transition: 0.5s;       /* Animación de apertura/cierre */
-        padding-top: 60px;      /* Espacio superior */
-        z-index: 9999;          /* Por encima del contenido */
-        }
-        .side-nav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #000000;
-        display: block;
-        transition: 0.3s;
-        }
-        .side-nav a:hover {
-        background-color: #c56868;
-        }
-        .side-nav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        text-decoration: none;
+        .experience-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
         }
 
-        /* Botón flotante para abrir el menú, unido al lado izquierdo */
-        .floating-menu-btn {
-        position: fixed;
-        left: 0;
-        top: 10%; /* Centrado verticalmente */
-        transform: translateY(-50%);
-        background-color: #ffffff;
-        color: #000000;
-        border: none;
-        padding: 15px;
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-        cursor: pointer;
-        z-index: 10000;
-        }
-        .map-container {
-          position: relative;
-          width: 100%;
-          max-width: 600px; /* Ajusta el ancho máximo si lo deseas */
-          margin: 0 auto;   /* Centra el contenedor en la página */
-          padding-bottom: 56.25%; /* Relación de aspecto 16:9 (100% / 16 * 9) */
-          height: 0;       /* Para crear el espacio vertical en proporción */
-          overflow: hidden; 
-        }
-        
-        .map-container iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;  /* Se ajusta al ancho del contenedor */
-          height: 100%; /* Se ajusta a la altura del contenedor */
-          border: 0;
+        body.dark-mode .experience-card {
+            background: #1e293b;
         }
 
+        .experience-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            transition: opacity 0.3s;
+        }
+
+        .experience-card:hover .card-image::after {
+            opacity: 0;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: 'Arial', sans-serif;
+            z-index: 1;
+        }
+
+        .card-status {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: 'Arial', sans-serif;
+            z-index: 1;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #10b981;
+            color: white;
+        }
+
+        .status-reserved {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .status-completed {
+            background: #6366f1;
+            color: white;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        body.dark-mode .card-description {
+            color: #94a3b8;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .card-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .card-btn {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .card-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        .card-id {
+            font-size: 0.8rem;
+            color: #999;
+            font-family: 'Courier New', monospace;
+            margin-top: 10px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body.dark-mode .modal-content {
+            background: #1e293b;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-detail {
+            margin: 15px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .bank-details {
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px dashed var(--accent);
+        }
+
+        .copy-btn {
+            padding: 12px 24px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            position: absolute;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .experiences-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            .timeline-section h2 { font-size: 2rem; }
+        }
     </style>
 </head>
-<body preloader onload="ocultarPreloader()">
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">ð</div>
 
-    <!-- Contenedor del preloader -->
-    <div id="preloader">
-      <!-- Ajusta la ruta de la imagen si es necesario -->
-      <img src="https://i.imgur.com/qvl5wFA_d.webp?maxwidth=760&fidelity=grand" alt="Preloader - Había una vez" />
-    </div>
-    <!-- Botón flotante para abrir el menú -->
-    <button class="floating-menu-btn" onclick="openNav()">&#9776;</button>
-
-    <!-- Menú lateral -->
-    <div id="sideNav" class="side-nav">
-        <!-- Botón para cerrar el menú -->
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <!-- Enlaces del menú -->
-        <a href="#home">Inicio</a>
-        <a href="historia.html">Nuestra Historia</a>
-        <a href="#details">Detalles del Evento</a>
-        <a href="#rsvp">Confirma tu Asistencia</a>
-    </div>
-
-    <header id="home">
-        <nav aria-label="Menú principal">
-          <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="historia.html">Nuestra Historia</a></li>
-          </ul>
-        </nav>
-        <div class="header-content">
-          <h1>Manuel & Naara</h1>
-          <h2>¡Nos casamos!</h2>
-          <blockquote>
-            <p>
-              "El amor es sufrido, es benigno; el amor no tiene envidia, el amor no es jactancioso, no se envanece; no hace nada indebido, no busca lo suyo, no se irrita, no guarda rencor; no se goza de la injusticia, mas se goza de la verdad. Todo lo sufre, todo lo cree, todo lo espera, todo lo soporta. El amor nunca deja de ser."
-            </p>
-            <footer>(1 Corintios 13:4-8a, Reina-Valera 1960)</footer>
-          </blockquote>
-          <div id="countdown"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nuestra Luna de Miel</h1>
+            <p>Puerto Varas & Valdivia â¢ Una Aventura Ãnica</p>
         </div>
-      </header>
-      
-
-    <section id="details">
-      <h2>Detalles del Evento</h2>
-      <p><strong>Fecha:</strong> Enero 2026</p>
-      <p><strong>Lugar:</strong> [Ubicación de la boda]</p>
-      <p><strong>Vestimenta:</strong> [Código de vestimenta]</p>
-    
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?..."
-          allowfullscreen
-        ></iframe>
-      </div>
-    </section>
-    <!--<audio controls autoplay loop>
-      <source src="https://res.cloudinary.com/dhpjuny3p/video/upload/v1743700326/Where_no_one_goes_-_J%C3%B3nsi_sub_espa%C3%B1ol_C%C3%B3mo_entrenar_a_tu_drag%C3%B3n_2_gntuph.mp3" type="audio/mpeg">
-      Tu navegador no soporta audio HTML5.
-    </audio>-->
-    <!--<audio autoplay loop muted preload="auto">
-    <source src="https://res.cloudinary.com/dhpjuny3p/video/upload/v1743700326/Where_no_one_goes_-_J%C3%B3nsi_sub_espa%C3%B1ol_C%C3%B3mo_entrenar_a_tu_drag%C3%B3n_2_gntuph.mp3" type="audio/mpeg">
-    </audio>-->
-    <audio id="bg-music" autoplay loop muted>
-       <source src="https://res.cloudinary.com/dhpjuny3p/video/upload/v1743700326/Where_no_one_goes_-_J%C3%B3nsi_sub_espa%C3%B1ol_C%C3%B3mo_entrenar_a_tu_drag%C3%B3n_2_gntuph.mp3" type="audio/mpeg">
-    </audio>
-    <!--scrip audio-->
-    <script>
-      window.addEventListener('click', function () {
-        const audio = document.getElementById('bg-music');
-        audio.muted = false;
-        audio.play();
-      }, { once: true });
-    </script>
-    
-    <section id="rsvp">
-        <h2>Confirma tu Asistencia</h2>
-        <form id="rsvpForm">
-            <input type="text" name="name" id="name" placeholder="Tu Nombre" required>
-            <input type="email" name="email" id="email" placeholder="Tu Correo" required>
-            <button type="submit">Confirmar Asistencia</button>
-        </form>
-        <p id="responseMessage"></p>
+        <div class="scroll-indicator">â¬</div>
     </section>
 
-    <footer>
-        <p>Con mucho amor, Manuel & Naara ❤️</p>
-    </footer>
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <h2>Nuestra Historia</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <h3>ð Nos Conocimos</h3>
+                <p>El inicio de una historia increÃ­ble</p>
+            </div>
+            <div class="timeline-item">
+                <h3>ð Primer Viaje</h3>
+                <p>Descubriendo el mundo juntos</p>
+            </div>
+            <div class="timeline-item">
+                <h3>ð La Propuesta</h3>
+                <p>El momento perfecto</p>
+            </div>
+            <div class="timeline-item">
+                <h3>ð La Boda</h3>
+                <p>Celebrando nuestro amor</p>
+            </div>
+            <div class="timeline-item">
+                <h3>ð Luna de Miel</h3>
+                <p>La aventura que ustedes harÃ¡n posible</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters">
+        <button class="filter-btn active" data-category="all">Todas</button>
+        <button class="filter-btn" data-category="puerto-varas">Puerto Varas</button>
+        <button class="filter-btn" data-category="valdivia">Valdivia</button>
+        <button class="filter-btn" data-category="unicas">Ãnicas</button>
+        <button class="filter-btn" data-category="confort">Confort</button>
+        <button class="filter-btn" data-category="aventura">Aventura</button>
+        <button class="filter-btn" data-category="relax">Relax</button>
+    </div>
+
+    <!-- Experiences Grid -->
+    <div class="experiences-grid" id="experiencesGrid"></div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-detail" id="modalDescription"></p>
+            <p class="modal-detail"><strong>Precio:</strong> <span id="modalPrice"></span></p>
+            
+            <div class="bank-details">
+                <h3>Datos para Transferencia</h3>
+                <p><strong>Banco:</strong> Banco de Chile</p>
+                <p><strong>Tipo de Cuenta:</strong> Cuenta Corriente</p>
+                <p><strong>Nombre:</strong> [Tu Nombre Completo]</p>
+                <p><strong>RUT:</strong> [Tu RUT]</p>
+                <p><strong>Email:</strong> novios@ejemplo.com</p>
+                <p><strong>CÃ³digo Regalo:</strong> <span id="modalId" style="color: var(--accent); font-weight: bold;"></span></p>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">Por favor incluye el cÃ³digo en el mensaje de la transferencia</p>
+            </div>
+            
+            <button class="copy-btn" onclick="copyGiftId()">ð Copiar CÃ³digo de Regalo</button>
+            <button class="copy-btn" onclick="reserveGift()" style="background: #10b981;">â¨ Reservar Este Regalo</button>
+        </div>
+    </div>
+
     <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.classList.add('hidden');
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 1000);
-            }, 2000);
+        const experiences = [
+            {id: 'CENA-AWA-001', title: 'Cena RomÃ¡ntica en Hotel AWA', description: 'Cena gourmet de 5 tiempos con maridaje de vinos en restaurante con vista al lago Llanquihue', price: 180000, category: 'puerto-varas'},
+            {id: 'KAYAK-PV-002', title: 'Paseo en Kayak al Amanecer', description: 'Tour privado en kayak por el lago Llanquihue con guÃ­a, desayuno incluido y vista a los volcanes', price: 120000, category: 'puerto-varas'},
+            {id: 'SPA-PV-003', title: 'Spa de Pareja con Vista', description: 'Masaje de piedras calientes para dos con acceso a piscinas termales y champagne', price: 150000, category: 'relax'},
+            {id: 'FOTO-PV-004', title: 'Tour FotogrÃ¡fico Profesional', description: 'SesiÃ³n de fotos profesional en locaciones icÃ³nicas de Puerto Varas (Saltos del PetrohuÃ©, volcanes)', price: 200000, category: 'puerto-varas'},
+            {id: 'COCINA-PV-005', title: 'Clase Privada de Cocina Chilena', description: 'Clase de cocina con chef local, aprenderÃ¡n a preparar curanto y postres tradicionales', price: 95000, category: 'puerto-varas'},
+            {id: 'VUELO-PV-006', title: 'Vuelo PanorÃ¡mico sobre Volcanes', description: 'Vuelo en avioneta de 45 minutos sobre volcanes Osorno, Calbuco y Tronador', price: 280000, category: 'aventura'},
+            {id: 'PICNIC-PV-007', title: 'Picnic Gourmet en Frutillar', description: 'Canasta premium con productos locales, manta y ubicaciÃ³n privilegiada frente al lago', price: 75000, category: 'puerto-varas'},
+            {id: 'COCHAMO-008', title: 'ExcursiÃ³n a CochamÃ³', description: 'Trekking guiado de dÃ­a completo en el valle de CochamÃ³ con almuerzo campestre', price: 130000, category: 'aventura'},
+            {id: 'CATAMARAN-VD-009', title: 'Paseo en CatamarÃ¡n', description: 'Tour de 3 horas navegando por los rÃ­os Calle-Calle, Valdivia y Cruces, con once a bordo', price: 85000, category: 'valdivia'},
+            {id: 'CERVEZA-VD-010', title: 'Tour Cervecero Artesanal', description: 'Visita a 3 cervecerÃ­as locales con degustaciÃ³n y maridaje de quesos', price: 90000, category: 'valdivia'},
+            {id: 'CASTILLO-VD-011', title: 'Cena en Castillo San Luis', description: 'Experiencia gastronÃ³mica en castillo histÃ³rico con menÃº fusiÃ³n chileno-alemÃ¡n', price: 160000, category: 'valdivia'},
+            {id: 'KAYAK-BIO-012', title: 'Kayak con Bioluminiscencia', description: 'Experiencia Ãºnica remando en aguas con microorganismos bioluminiscentes', price: 110000, category: 'unicas'},
+            {id: 'MERCADO-VD-013', title: 'Tour de Mercados', description: 'Recorrido guiado gastronÃ³mico por mercados locales con degustaciones de mariscos frescos', price: 65000, category: 'valdivia'},
+            {id: 'FOTO-NAT-014', title: 'Clase de FotografÃ­a', description: 'Taller de fotografÃ­a en la Reserva Costera Valdiviana con fotÃ³grafo profesional', price: 125000, category: 'valdivia'},
+            {id: 'CABALLO-VD-015', title: 'Paseo a Caballo', description: 'Cabalgata de 2 horas por playa y bosque nativo con guÃ­a', price: 80000, category: 'valdivia'},
+            {id: 'ASTRO-016', title: 'Noche de AstronomÃ­a', description: 'SesiÃ³n privada de observaciÃ³n estelar con telescopio profesional y astrÃ³nomo experto', price: 140000, category: 'unicas'},
+            {id: 'CERAMICA-017', title: 'Taller de CerÃ¡mica', description: 'Clase de alfarerÃ­a tradicional donde crearÃ¡n sus propias piezas de recuerdo', price: 70000, category: 'unicas'},
+            {id: 'TERMAS-018', title: 'Termas Escondidas', description: 'Experiencia privada en termas naturales poco conocidas con guÃ­a local', price: 115000, category: 'relax'},
+            {id: 'FORRAJEO-019', title: 'Forrajeo y Cocina', description: 'Salida a recolectar ingredientes silvestres y luego cocinar con chef', price: 145000, category: 'unicas'},
+            {id: 'TEMAZCAL-020', title: 'Ritual de Temazcal', description: 'Ceremonia ancestral de purificaciÃ³n en casa de piedra con guÃ­a espiritual', price: 100000, category: 'unicas'},
+            {id: 'UPGRADE-021', title: 'Upgrade de HabitaciÃ³n', description: 'Mejora a suite con jacuzzi, vista panorÃ¡mica y amenidades especiales', price: 250000, category: 'confort'},
+            {id: 'DESAYUNO-022', title: 'Desayuno de Lujo', description: 'Desayuno gourmet servido en la habitaciÃ³n con champagne y fresas', price: 55000, category: 'confort'},
+            {id: 'DECO-HAB-023', title: 'DecoraciÃ³n RomÃ¡ntica', description: 'PÃ©talos de rosa, velas aromÃ¡ticas, chocolates artesanales y mÃºsica ambiente', price: 45000, category: 'confort'},
+            {id: 'MINIBAR-024', title: 'Mini Bar Premium', description: 'SelecciÃ³n de vinos chilenos premium, pisco, y snacks gourmet para la habitaciÃ³n', price: 95000, category: 'confort'},
+            {id: 'RAFTING-025', title: 'Rafting en RÃ­o PetrohuÃ©', description: 'Descenso de rÃ¡pidos clase III-IV con guÃ­as certificados y equipo completo', price: 135000, category: 'aventura'},
+            {id: 'CANOPY-026', title: 'Canopy en Bosque Nativo', description: 'Circuito de tirolesas sobre selva valdiviana con 8 estaciones', price: 105000, category: 'aventura'},
+            {id: 'ESCALADA-027', title: 'Escalada en Roca', description: 'DÃ­a de escalada deportiva en formaciones volcÃ¡nicas con equipo e instructor', price: 155000, category: 'aventura'},
+            {id: 'SPA-DIA-028', title: 'DÃ­a Completo de Spa', description: 'Circuito termal, masajes, tratamientos faciales y almuerzo saludable incluido', price: 220000, category: 'relax'},
+            {id: 'YOGA-029', title: 'Yoga al Amanecer', description: 'Clase de yoga y meditaciÃ³n frente al lago con instructor certificado', price: 60000, category: 'relax'},
+            {id: 'BOSQUE-030', title: 'BaÃ±o de Bosque', description: 'Experiencia guiada de inmersiÃ³n consciente en naturaleza para reducir estrÃ©s', price: 85000, category: 'relax'}
+        ];
+
+        let currentGift = null;
+
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('es-CL') + ' CLP';
+        }
+
+        function getStatus(id) {
+            const reserved = JSON.parse(localStorage.getItem('reservedGifts') || '[]');
+            return reserved.includes(id) ? 'reserved' : 'available';
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'puerto-varas': 'Puerto Varas',
+                'valdivia': 'Valdivia',
+                'unicas': 'Ãnica',
+                'confort': 'Confort',
+                'aventura': 'Aventura',
+                'relax': 'Relax'
+            };
+            return labels[category] || category;
+        }
+
+        function renderExperiences(filter = 'all') {
+            const grid = document.getElementById('experiencesGrid');
+            const filtered = filter === 'all' ? experiences : experiences.filter(e => e.category === filter);
+            
+            grid.innerHTML = filtered.map(exp => {
+                const status = getStatus(exp.id);
+                return `
+                    <div class="experience-card" onclick="openModal('${exp.id}')">
+                        <div class="card-image">
+                            <span class="card-badge">${getCategoryLabel(exp.category)}</span>
+                            <span class="card-status status-${status}">
+                                ${status === 'available' ? 'Disponible' : 'Reservado'}
+                            </span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">${exp.title}</h3>
+                            <p class="card-description">${exp.description}</p>
+                            <div class="card-footer">
+                                <span class="card-price">${formatPrice(exp.price)}</span>
+                                <button class="card-btn">Ver Detalles</button>
+                            </div>
+                            <p class="card-id">${exp.id}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openModal(id) {
+            const exp = experiences.find(e => e.id === id);
+            currentGift = exp;
+            
+            document.getElementById('modalTitle').textContent = exp.title;
+            document.getElementById('modalDescription').textContent = exp.description;
+            document.getElementById('modalPrice').textContent = formatPrice(exp.price);
+            document.getElementById('modalId').textContent = exp.id;
+            
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        function copyGiftId() {
+            const id = document.getElementById('modalId').textContent;
+            navigator.clipboard.writeText(id);
+            alert('Â¡CÃ³digo copiado al portapapeles!');
+        }
+
+        function reserveGift() {
+            if (!currentGift) return;
+            
+            const reserved = JSON.parse(localStorage.getItem('reservedGifts') || '[]');
+            if (!reserved.includes(currentGift.id)) {
+                reserved.push(currentGift.id);
+                localStorage.setItem('reservedGifts', JSON.stringify(reserved));
+                createConfetti();
+                alert('Â¡Gracias por tu regalo! ð');
+                closeModal();
+                renderExperiences();
+            } else {
+                alert('Este regalo ya estÃ¡ reservado');
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = ['#667eea', '#764ba2', '#f093fb', '#4facfe'][Math.floor(Math.random() * 4)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            document.querySelector('.dark-mode-toggle').textContent = isDark ? 'âï¸' : 'ð';
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderExperiences(this.dataset.category);
+            });
         });
-    </script>  
-    <script>
-    function openNav() {
-        document.getElementById("sideNav").style.width = "250px";
-    }
 
-    function closeNav() {
-        document.getElementById("sideNav").style.width = "0";
-    }
-    </script>
-    <!--scrip audio-->
-    <script>
-      window.addEventListener('click', function () {
-        const audio = document.getElementById('bg-music');
-        audio.muted = false;
-        audio.play();
-      }, { once: true });
-    </script>
+        // Close modal on outside click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
 
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            renderExperiences();
+            
+            // Restore dark mode preference
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.dark-mode-toggle').textContent = 'âï¸';
+            }
+            
+            // Smooth scroll
+            document.querySelector('.scroll-indicator').addEventListener('click', () => {
+                document.querySelector('.timeline-section').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
 </body>
 </html>
+
