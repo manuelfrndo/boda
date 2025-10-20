@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html class="no-js" lang="es-CL">
-<head>
+    <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manuel & Naara 2026</title>
         
         <!-- Favicon -->
@@ -34,16 +34,18 @@
         <script src="https://invitaciones.thewebsite.cl/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
         <!-- Estilos CSS para la lista de deseos -->
         <!-- Estilos CSS para la lista de deseos -->
-        <style>
-            /* Grid de regalos */
+        <!-- CSS -->
+<style>
+/* Grid de regalos */
 .gift-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 30px 15px;
+    gap: 30px 20px;
+    padding: 20px 0;
     max-width: 1200px;
     margin: 0 auto;
 }
+
 
 /* Tarjeta de regalo */
 .gift-card {
@@ -55,16 +57,20 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 2px solid #f0f0f0;
 }
-
 .gift-card:active {
     transform: scale(0.98);
+}
+.gift-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(230, 185, 151, 0.3);
+    border-color: #E6B997;
 }
 
 /* Título del regalo */
 .gift-card h3 {
     color: #E6B997;
     font-size: 1.25rem;
-    margin: 0 0 12px 0;
+    margin-bottom: 12px;
     font-weight: 600;
     font-family: 'Cormorant SC', serif;
     line-height: 1.3;
@@ -75,7 +81,7 @@
     color: #666;
     font-size: 0.9rem;
     line-height: 1.5;
-    margin: 0 0 15px 0;
+    margin-bottom: 15px;
 }
 
 /* Precio */
@@ -87,47 +93,42 @@
     border-radius: 25px;
     font-weight: 600;
     font-size: 1.1rem;
-    margin-top: 8px;
 }
 
-/* Nota adicional */
+/* Nota adicional / versículo */
 .gift-note {
     text-align: center;
-    padding: 30px 20px;
+    padding: 40px 20px 60px;
     max-width: 800px;
-    margin: 20px auto 0;
+    margin: 60px auto 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
-
 .gift-note p {
     color: #a58d6f;
-    font-size: 1.3rem;
-    line-height: 1.7;
+    font-size: 2rem;
+    line-height: 1.6;
     font-family: 'Cormorant Infant', serif;
 }
+.gift-note span {
+    display: block;
+    margin-top: 8px;
+    color: #b8a38a;
+    font-size: 1.8rem;
+}
 
-/* Responsive para tablets */
+/* Responsive */
 @media (min-width: 600px) {
     .gift-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-        padding: 40px 20px;
     }
 }
-
-/* Responsive para desktop */
 @media (min-width: 992px) {
     .gift-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        padding: 50px 20px;
     }
-    
-    .gift-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(230, 185, 151, 0.3);
-        border-color: #E6B997;
-    }
-}        </style>
+}
+</style>
     </head>
     <body class="page-template-default page page-id-17523 elementor-default elementor-kit-53 elementor-page elementor-page-17523 phlox aux-dom-unready aux-full-width aux-resp aux-s-fhd  aux-page-animation-off _auxels" data-framed="">
         <main id="main" class="aux-main aux-territory  aux-single aux-page aux-full-container no-sidebar aux-sidebar-style-border aux-user-entry">
@@ -161,242 +162,135 @@
                                                         </div>
                                                     </div>
                                                 </section>
-                                                <section class="elementor-section elementor-top-section elementor-element elementor-section-full_width elementor-section-content-middle" data-id="lista-deseos" data-element_type="section" style="margin-bottom: 80px;" id="lista-deseos" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                    <div class="elementor-background-overlay"></div>
-                                                    <div class="elementor-container elementor-column-gap-default">
-                                                        <div class="aux-parallax-section elementor-column elementor-col-100 elementor-top-column elementor-element">
-                                                            <div class="elementor-widget-wrap elementor-element-populated">
-                                                                <!-- Grid de regalos -->
-                                                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
 
-                                                                    <!-- Regalo 1: Cena Romántica en Hotel AWA -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Cena Romántica en Hotel AWA</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Cena gourmet de 5 tiempos con maridaje de vinos en restaurante con vista al lago Llanquihue</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$180.000</span>
+                                                <!-- Sección: Lista de regalos -->
+<section class="elementor-section elementor-top-section lista-deseos elementor-section-full_width" data-id="lista-deseos" data-element_type="section">
+    <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-column elementor-col-100 elementor-top-column">
+            <div class="elementor-widget-wrap">
+
+                <!-- Grid de regalos -->
+                <div class="gift-grid">
+                                                                                        <!-- Regalo 1: Cena Romántica en Hotel AWA -->
+                                                                    <div class="gift-card">
+                                                                        <h3>Cena Romántica en Hotel AWA</h3>
+                                                                        <p>Cena gourmet de 5 tiempos con maridaje de vinos en restaurante con vista al lago Llanquihue</p>
+                                                                        <span class="gift-price">$180.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 2: Paseo en Kayak -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Paseo en Kayak al Amanecer</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Tour privado en kayak por el lago Llanquihue con guía, desayuno incluido y vista a los volcanes</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$120.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Paseo en Kayak al Amanecer</h3>
+                                                                        <p>Tour privado en kayak por el lago Llanquihue con guía, desayuno incluido y vista a los volcanes</p>
+                                                                        <span class="gift-price">$120.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 3: Spa de Pareja -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Spa de Pareja con Vista</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Masaje de piedras calientes para dos con acceso a piscinas termales y champagne</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$150.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Spa de Pareja con Vista</h3>
+                                                                        <p>Masaje de piedras calientes para dos con acceso a piscinas termales y champagne</p>
+                                                                        <span class="gift-price">$150.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 4: Tour Fotográfico -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Tour Fotográfico Profesional</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Sesión de fotos profesional en locaciones icónicas de Puerto Varas</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$200.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Tour Fotográfico Profesional</h3>
+                                                                        <p>Sesión de fotos profesional en locaciones icónicas de Puerto Varas</p>
+                                                                        <span class="gift-price">$200.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 5: Clase de Cocina -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Clase Privada de Cocina Chilena</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Clase de cocina con chef local, aprenderán a preparar curanto y postres tradicionales</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$95.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Clase Privada de Cocina Chilena</h3>
+                                                                        <p>Clase de cocina con chef local, aprenderán a preparar curanto y postres tradicionales</p>
+                                                                        <span class="gift-price">$95.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 6: Vuelo Panorámico -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Vuelo Panorámico sobre Volcanes</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Vuelo en avioneta de 45 minutos sobre volcanes Osorno, Calbuco y Tronador</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$280.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Vuelo Panorámico sobre Volcanes</h3>
+                                                                        <p>Vuelo en avioneta de 45 minutos sobre volcanes Osorno, Calbuco y Tronador</p>
+                                                                        <span class="gift-price">$280.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 7: Picnic Gourmet -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Picnic Gourmet en Frutillar</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Canasta premium con productos locales, manta y ubicación privilegiada frente al lago</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$75.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Picnic Gourmet en Frutillar</h3>
+                                                                        <p>Canasta premium con productos locales, manta y ubicación privilegiada frente al lago</p>
+                                                                        <span class="gift-price">$75.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 8: Excursión a Cochamó -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Excursión a Cochamó</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Trekking guiado de día completo en el valle de Cochamó con almuerzo campestre</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$130.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Excursión a Cochamó</h3>
+                                                                        <p>Trekking guiado de día completo en el valle de Cochamó con almuerzo campestre</p>
+                                                                        <span class="gift-price">$130.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 9: Paseo en Catamarán -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Paseo en Catamarán</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Tour de 3 horas navegando por los ríos Calle-Calle, Valdivia y Cruces, con once a bordo</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$85.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Paseo en Catamarán</h3>
+                                                                        <p>Tour de 3 horas navegando por los ríos Calle-Calle, Valdivia y Cruces, con once a bordo</p>
+                                                                        <span class="gift-price">$85.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 10: Tour Cervecero -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Tour Cervecero Artesanal</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Visita a 3 cervecerías locales con degustación y maridaje de quesos</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$90.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Tour Cervecero Artesanal</h3>
+                                                                        <p>Visita a 3 cervecerías locales con degustación y maridaje de quesos</p>
+                                                                        <span class="gift-price">$90.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 11: Cena en Castillo -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Cena en Castillo San Luis</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia gastronómica en castillo histórico con menú fusión chileno-alemán</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$160.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Cena en Castillo San Luis</h3>
+                                                                        <p>Experiencia gastronómica en castillo histórico con menú fusión chileno-alemán</p>
+                                                                        <span class="gift-price">$160.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 12: Kayak Bioluminiscencia -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Kayak con Bioluminiscencia</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia única remando en aguas con microorganismos bioluminiscentes</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$110.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Kayak con Bioluminiscencia</h3>
+                                                                        <p>Experiencia única remando en aguas con microorganismos bioluminiscentes</p>
+                                                                        <span class="gift-price">$110.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 13: Tour de Mercados -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Tour de Mercados</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Recorrido guiado gastronómico por mercados locales con degustaciones de mariscos frescos</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$65.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Tour de Mercados</h3>
+                                                                        <p>Recorrido guiado gastronómico por mercados locales con degustaciones de mariscos frescos</p>
+                                                                        <span class="gift-price">$65.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 14: Clase de Fotografía -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Clase de Fotografía</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Taller de fotografía en la Reserva Costera Valdiviana con fotógrafo profesional</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$125.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Clase de Fotografía</h3>
+                                                                        <p>Taller de fotografía en la Reserva Costera Valdiviana con fotógrafo profesional</p>
+                                                                        <span class="gift-price">$125.000</span>
                                                                     </div>
 
                                                                     <!-- Regalo 15: Paseo a Caballo -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Paseo a Caballo</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Cabalgata de 2 horas por playa y bosque nativo con guía</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$80.000</span>
+                                                                    <div class="gift-card">
+                                                                        <h3>Paseo a Caballo</h3>
+                                                                        <p>Cabalgata de 2 horas por playa y bosque nativo con guía</p>
+                                                                        <span class="gift-price">$80.000</span>
                                                                     </div>
 
-                                                                    <!-- Regalo 16: Noche de Astronomía -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Noche de Astronomía</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Sesión privada de observación estelar con telescopio profesional y astrónomo experto</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$140.000</span>
-                                                                    </div>
+                </div>
 
-                                                                    <!-- Regalo 17: Taller de Cerámica -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Taller de Cerámica</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Clase de alfarería tradicional donde crearán sus propias piezas de recuerdo</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$70.000</span>
-                                                                    </div>
+                <!-- Nota adicional / versículo -->
+                <div class="gift-note">
+                    <p>
+                        <em>“Deléitate asimismo en Jehová, y Él te concederá las peticiones de tu corazón.”</em>
+                        <br>
+                        <span>— Salmo 37:4</span>
+                    </p>
+                </div>
 
-                                                                    <!-- Regalo 18: Termas Escondidas -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Termas Escondidas</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia privada en termas naturales poco conocidas con guía local</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$115.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 19: Forrajeo y Cocina -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Forrajeo y Cocina</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Salida a recolectar ingredientes silvestres y luego cocinar con chef</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$145.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 20: Ritual de Temazcal -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Ritual de Temazcal</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Ceremonia ancestral de purificación en casa de piedra con guía espiritual</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$100.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 21: Upgrade de Habitación -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Upgrade de Habitación</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Mejora a suite con jacuzzi, vista panorámica y amenidades especiales</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$250.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 22: Desayuno de Lujo -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Desayuno de Lujo</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Desayuno gourmet servido en la habitación con champagne y fresas</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$55.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 23: Decoración Romántica -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Decoración Romántica</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Pétalos de rosa, velas aromáticas, chocolates artesanales y música ambiente</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$45.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 24: Mini Bar Premium -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Mini Bar Premium</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Selección de vinos chilenos premium, pisco, y snacks gourmet para la habitación</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$95.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 25: Rafting en Río Petrohué -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Rafting en Río Petrohué</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Descenso de rápidos clase III-IV con guías certificados y equipo completo</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$135.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 26: Canopy en Bosque Nativo -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Canopy en Bosque Nativo</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Circuito de tirolesas sobre selva valdiviana con 8 estaciones</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$105.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 27: Escalada en Roca -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Escalada en Roca</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Día de escalada deportiva en formaciones volcánicas con equipo e instructor</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$155.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 28: Día Completo de Spa -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Día Completo de Spa</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Circuito termal, masajes, tratamientos faciales y almuerzo saludable incluido</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$220.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 29: Yoga al Amanecer -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Yoga al Amanecer</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Clase de yoga y meditación frente al lago con instructor certificado</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$60.000</span>
-                                                                    </div>
-
-                                                                    <!-- Regalo 30: Baño de Bosque -->
-                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
-                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Baño de Bosque</h3>
-                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia guiada de inmersión consciente en naturaleza para reducir estrés</p>
-                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$85.000</span>
-                                                                    </div>
-
-                                                                    <!-- Puedes mantener el resto de regalos con la misma estructura -->
-                                                                </div>
-
-                                                                <!-- Nota adicional -->
-<div style="text-align: center; padding: 30px 20px; max-width: 800px; margin: 30px auto 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
-    <p style="color: #a58d6f; font-size: 1.3rem; line-height: 1.7; font-family: 'Cormorant Infant', serif; margin: 0; font-style: italic;">
-        <em>"Deléitate asimismo en Jehová, y Él te concederá las peticiones de tu corazón."</em>
-        <br>
-        <span style="display: block; margin-top: 10px; color: #b8a38a; font-size: 1.1rem;">— Salmo 37:4</span>
-    </p>
-</div>
-
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </section>
+            </div>
+        </div>
+    </div>
+</section>
                                                 <section class="elementor-section elementor-top-section elementor-element elementor-element-396fbf3 elementor-section-full_width elementor-section-content-middle elementor-section-height-default elementor-section-height-default"  data-id="396fbf3" data-element_type="section" id="lista" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                                     <div class="elementor-background-overlay"></div>
                                                     <div class="elementor-container elementor-column-gap-default">
@@ -412,7 +306,7 @@
                                                                     <div class="elementor-widget-container">
                                                                         <section class="aux-widget-modern-heading">
                                                                             <div class="aux-widget-inner">
-                                                                                <h2 class="aux-modern-heading-primary">REGALOS</h2>
+                                                                                <h2 class="aux-modern-heading-primary">¡GRACIAS!</h2>
                                                                                 <div class="aux-modern-heading-description">
                                                                                     <p>Con gratitud en nuestros corazones, damos gracias a Dios por su amor y por rodearnos de personas tan especiales como ustedes. Cada detalle y muestra de cariño será una bendición en este nuevo comienzo que Él nos permite vivir juntos.</p>
                                                                                 </div>
@@ -435,7 +329,8 @@
                                                         </div>
                                                     </div>
                                                 </section>
-                                                
+
+                                                <!-- Musica -->
                                                 <section class="elementor-section elementor-top-section elementor-element elementor-element-1094527 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1094527" data-element_type="section">
                                                     <div class="elementor-container elementor-column-gap-default">
                                                         <div class="aux-parallax-section elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-dbc1fa9" data-id="dbc1fa9" data-element_type="column">
@@ -445,13 +340,11 @@
                                                                         <div style="display: flex; justify-content: center; align-items: center;">
                                                                             <!-- Botón con ícono de nota musical -->
                                                                             <button id="playPauseBtn" style="
-    background-color: white;
-    border: 2px solid #E6B997;
-    cursor: pointer;
-    padding: 12px;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;">
+                                                                                    background-color: white; /* Cambia el color de fondo aquí */
+                                                                                    border: 2px solid gray; /* Cambia el color del borde aquí */
+                                                                                    cursor: pointer;
+                                                                                    padding: 10px;
+                                                                                    border-radius: 50%;">
                                                                                 <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-music">
                                                                                     <path d="M9 18V5l12-2v13"></path>
                                                                                     <circle cx="6" cy="18" r="3"></circle>
