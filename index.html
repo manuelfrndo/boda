@@ -1,736 +1,530 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="no-js" lang="es-CL">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Luna de Miel - Lista de Experiencias</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-light: #f8f9fa;
-            --bg-dark: #0a0e27;
-            --text-light: #1a1a2e;
-            --text-dark: #e4e4e7;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            background: var(--bg-light);
-            color: var(--text-light);
-            overflow-x: hidden;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        body.dark-mode {
-            background: var(--bg-dark);
-            color: var(--text-dark);
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 12px 16px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: transform 0.3s;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            animation: wave 15s ease-in-out infinite;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 1;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            font-family: 'Arial', sans-serif;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
-        }
-
-        /* Timeline Section */
-        .timeline-section {
-            padding: 80px 20px;
-            overflow-x: auto;
-            background: var(--bg-light);
-        }
-
-        body.dark-mode .timeline-section {
-            background: var(--bg-dark);
-        }
-
-        .timeline-section h2 {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
-        }
-
-        .timeline-container {
-            display: flex;
-            gap: 40px;
-            padding: 40px;
-            min-width: max-content;
-        }
-
-        .timeline-item {
-            min-width: 300px;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        body.dark-mode .timeline-item {
-            background: #1e293b;
-        }
-
-        .timeline-item:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Filters */
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 40px 20px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 12px 24px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Arial', sans-serif;
-            color: inherit;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--accent);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        /* Experience Grid */
-        .experiences-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .experience-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-        }
-
-        body.dark-mode .experience-card {
-            background: #1e293b;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        }
-
-        .card-image {
-            height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            transition: opacity 0.3s;
-        }
-
-        .experience-card:hover .card-image::after {
-            opacity: 0;
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-family: 'Arial', sans-serif;
-            z-index: 1;
-        }
-
-        .card-status {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-family: 'Arial', sans-serif;
-            z-index: 1;
-            font-weight: bold;
-        }
-
-        .status-available {
-            background: #10b981;
-            color: white;
-        }
-
-        .status-reserved {
-            background: #f59e0b;
-            color: white;
-        }
-
-        .status-completed {
-            background: #6366f1;
-            color: white;
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .card-description {
-            font-family: 'Arial', sans-serif;
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        body.dark-mode .card-description {
-            color: #94a3b8;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .card-price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        .card-btn {
-            padding: 10px 20px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Arial', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .card-btn:hover {
-            background: var(--accent-hover);
-            transform: scale(1.05);
-        }
-
-        .card-id {
-            font-size: 0.8rem;
-            color: #999;
-            font-family: 'Courier New', monospace;
-            margin-top: 10px;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        body.dark-mode .modal-content {
-            background: #1e293b;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #999;
-            transition: color 0.3s;
-        }
-
-        .modal-close:hover {
-            color: var(--accent);
-        }
-
-        .modal-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .modal-detail {
-            margin: 15px 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .bank-details {
-            background: var(--glass-bg);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border: 2px dashed var(--accent);
-        }
-
-        .copy-btn {
-            padding: 12px 24px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-family: 'Arial', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .copy-btn:hover {
-            background: var(--accent-hover);
-            transform: scale(1.05);
-        }
-
-        /* Confetti */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
-            position: absolute;
-            animation: confetti-fall 3s linear forwards;
-        }
-
-        @keyframes confetti-fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.2rem; }
-            .experiences-grid {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-            .timeline-section h2 { font-size: 2rem; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle" onclick="toggleDarkMode()">ð</div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Nuestra Luna de Miel</h1>
-            <p>Puerto Varas & Valdivia â¢ Una Aventura Ãnica</p>
-        </div>
-        <div class="scroll-indicator">â¬</div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="timeline-section">
-        <h2>Nuestra Historia</h2>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <h3>ð Nos Conocimos</h3>
-                <p>El inicio de una historia increÃ­ble</p>
-            </div>
-            <div class="timeline-item">
-                <h3>ð Primer Viaje</h3>
-                <p>Descubriendo el mundo juntos</p>
-            </div>
-            <div class="timeline-item">
-                <h3>ð La Propuesta</h3>
-                <p>El momento perfecto</p>
-            </div>
-            <div class="timeline-item">
-                <h3>ð La Boda</h3>
-                <p>Celebrando nuestro amor</p>
-            </div>
-            <div class="timeline-item">
-                <h3>ð Luna de Miel</h3>
-                <p>La aventura que ustedes harÃ¡n posible</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Filters -->
-    <div class="filters">
-        <button class="filter-btn active" data-category="all">Todas</button>
-        <button class="filter-btn" data-category="puerto-varas">Puerto Varas</button>
-        <button class="filter-btn" data-category="valdivia">Valdivia</button>
-        <button class="filter-btn" data-category="unicas">Ãnicas</button>
-        <button class="filter-btn" data-category="confort">Confort</button>
-        <button class="filter-btn" data-category="aventura">Aventura</button>
-        <button class="filter-btn" data-category="relax">Relax</button>
-    </div>
-
-    <!-- Experiences Grid -->
-    <div class="experiences-grid" id="experiencesGrid"></div>
-
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h2 class="modal-title" id="modalTitle"></h2>
-            <p class="modal-detail" id="modalDescription"></p>
-            <p class="modal-detail"><strong>Precio:</strong> <span id="modalPrice"></span></p>
-            
-            <div class="bank-details">
-                <h3>Datos para Transferencia</h3>
-                <p><strong>Banco:</strong> Banco de Chile</p>
-                <p><strong>Tipo de Cuenta:</strong> Cuenta Corriente</p>
-                <p><strong>Nombre:</strong> [Tu Nombre Completo]</p>
-                <p><strong>RUT:</strong> [Tu RUT]</p>
-                <p><strong>Email:</strong> novios@ejemplo.com</p>
-                <p><strong>CÃ³digo Regalo:</strong> <span id="modalId" style="color: var(--accent); font-weight: bold;"></span></p>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">Por favor incluye el cÃ³digo en el mensaje de la transferencia</p>
-            </div>
-            
-            <button class="copy-btn" onclick="copyGiftId()">ð Copiar CÃ³digo de Regalo</button>
-            <button class="copy-btn" onclick="reserveGift()" style="background: #10b981;">â¨ Reservar Este Regalo</button>
-        </div>
-    </div>
-
-    <script>
-        const experiences = [
-            {id: 'CENA-AWA-001', title: 'Cena RomÃ¡ntica en Hotel AWA', description: 'Cena gourmet de 5 tiempos con maridaje de vinos en restaurante con vista al lago Llanquihue', price: 180000, category: 'puerto-varas'},
-            {id: 'KAYAK-PV-002', title: 'Paseo en Kayak al Amanecer', description: 'Tour privado en kayak por el lago Llanquihue con guÃ­a, desayuno incluido y vista a los volcanes', price: 120000, category: 'puerto-varas'},
-            {id: 'SPA-PV-003', title: 'Spa de Pareja con Vista', description: 'Masaje de piedras calientes para dos con acceso a piscinas termales y champagne', price: 150000, category: 'relax'},
-            {id: 'FOTO-PV-004', title: 'Tour FotogrÃ¡fico Profesional', description: 'SesiÃ³n de fotos profesional en locaciones icÃ³nicas de Puerto Varas (Saltos del PetrohuÃ©, volcanes)', price: 200000, category: 'puerto-varas'},
-            {id: 'COCINA-PV-005', title: 'Clase Privada de Cocina Chilena', description: 'Clase de cocina con chef local, aprenderÃ¡n a preparar curanto y postres tradicionales', price: 95000, category: 'puerto-varas'},
-            {id: 'VUELO-PV-006', title: 'Vuelo PanorÃ¡mico sobre Volcanes', description: 'Vuelo en avioneta de 45 minutos sobre volcanes Osorno, Calbuco y Tronador', price: 280000, category: 'aventura'},
-            {id: 'PICNIC-PV-007', title: 'Picnic Gourmet en Frutillar', description: 'Canasta premium con productos locales, manta y ubicaciÃ³n privilegiada frente al lago', price: 75000, category: 'puerto-varas'},
-            {id: 'COCHAMO-008', title: 'ExcursiÃ³n a CochamÃ³', description: 'Trekking guiado de dÃ­a completo en el valle de CochamÃ³ con almuerzo campestre', price: 130000, category: 'aventura'},
-            {id: 'CATAMARAN-VD-009', title: 'Paseo en CatamarÃ¡n', description: 'Tour de 3 horas navegando por los rÃ­os Calle-Calle, Valdivia y Cruces, con once a bordo', price: 85000, category: 'valdivia'},
-            {id: 'CERVEZA-VD-010', title: 'Tour Cervecero Artesanal', description: 'Visita a 3 cervecerÃ­as locales con degustaciÃ³n y maridaje de quesos', price: 90000, category: 'valdivia'},
-            {id: 'CASTILLO-VD-011', title: 'Cena en Castillo San Luis', description: 'Experiencia gastronÃ³mica en castillo histÃ³rico con menÃº fusiÃ³n chileno-alemÃ¡n', price: 160000, category: 'valdivia'},
-            {id: 'KAYAK-BIO-012', title: 'Kayak con Bioluminiscencia', description: 'Experiencia Ãºnica remando en aguas con microorganismos bioluminiscentes', price: 110000, category: 'unicas'},
-            {id: 'MERCADO-VD-013', title: 'Tour de Mercados', description: 'Recorrido guiado gastronÃ³mico por mercados locales con degustaciones de mariscos frescos', price: 65000, category: 'valdivia'},
-            {id: 'FOTO-NAT-014', title: 'Clase de FotografÃ­a', description: 'Taller de fotografÃ­a en la Reserva Costera Valdiviana con fotÃ³grafo profesional', price: 125000, category: 'valdivia'},
-            {id: 'CABALLO-VD-015', title: 'Paseo a Caballo', description: 'Cabalgata de 2 horas por playa y bosque nativo con guÃ­a', price: 80000, category: 'valdivia'},
-            {id: 'ASTRO-016', title: 'Noche de AstronomÃ­a', description: 'SesiÃ³n privada de observaciÃ³n estelar con telescopio profesional y astrÃ³nomo experto', price: 140000, category: 'unicas'},
-            {id: 'CERAMICA-017', title: 'Taller de CerÃ¡mica', description: 'Clase de alfarerÃ­a tradicional donde crearÃ¡n sus propias piezas de recuerdo', price: 70000, category: 'unicas'},
-            {id: 'TERMAS-018', title: 'Termas Escondidas', description: 'Experiencia privada en termas naturales poco conocidas con guÃ­a local', price: 115000, category: 'relax'},
-            {id: 'FORRAJEO-019', title: 'Forrajeo y Cocina', description: 'Salida a recolectar ingredientes silvestres y luego cocinar con chef', price: 145000, category: 'unicas'},
-            {id: 'TEMAZCAL-020', title: 'Ritual de Temazcal', description: 'Ceremonia ancestral de purificaciÃ³n en casa de piedra con guÃ­a espiritual', price: 100000, category: 'unicas'},
-            {id: 'UPGRADE-021', title: 'Upgrade de HabitaciÃ³n', description: 'Mejora a suite con jacuzzi, vista panorÃ¡mica y amenidades especiales', price: 250000, category: 'confort'},
-            {id: 'DESAYUNO-022', title: 'Desayuno de Lujo', description: 'Desayuno gourmet servido en la habitaciÃ³n con champagne y fresas', price: 55000, category: 'confort'},
-            {id: 'DECO-HAB-023', title: 'DecoraciÃ³n RomÃ¡ntica', description: 'PÃ©talos de rosa, velas aromÃ¡ticas, chocolates artesanales y mÃºsica ambiente', price: 45000, category: 'confort'},
-            {id: 'MINIBAR-024', title: 'Mini Bar Premium', description: 'SelecciÃ³n de vinos chilenos premium, pisco, y snacks gourmet para la habitaciÃ³n', price: 95000, category: 'confort'},
-            {id: 'RAFTING-025', title: 'Rafting en RÃ­o PetrohuÃ©', description: 'Descenso de rÃ¡pidos clase III-IV con guÃ­as certificados y equipo completo', price: 135000, category: 'aventura'},
-            {id: 'CANOPY-026', title: 'Canopy en Bosque Nativo', description: 'Circuito de tirolesas sobre selva valdiviana con 8 estaciones', price: 105000, category: 'aventura'},
-            {id: 'ESCALADA-027', title: 'Escalada en Roca', description: 'DÃ­a de escalada deportiva en formaciones volcÃ¡nicas con equipo e instructor', price: 155000, category: 'aventura'},
-            {id: 'SPA-DIA-028', title: 'DÃ­a Completo de Spa', description: 'Circuito termal, masajes, tratamientos faciales y almuerzo saludable incluido', price: 220000, category: 'relax'},
-            {id: 'YOGA-029', title: 'Yoga al Amanecer', description: 'Clase de yoga y meditaciÃ³n frente al lago con instructor certificado', price: 60000, category: 'relax'},
-            {id: 'BOSQUE-030', title: 'BaÃ±o de Bosque', description: 'Experiencia guiada de inmersiÃ³n consciente en naturaleza para reducir estrÃ©s', price: 85000, category: 'relax'}
-        ];
-
-        let currentGift = null;
-
-        function formatPrice(price) {
-            return '$' + price.toLocaleString('es-CL') + ' CLP';
-        }
-
-        function getStatus(id) {
-            const reserved = JSON.parse(localStorage.getItem('reservedGifts') || '[]');
-            return reserved.includes(id) ? 'reserved' : 'available';
-        }
-
-        function getCategoryLabel(category) {
-            const labels = {
-                'puerto-varas': 'Puerto Varas',
-                'valdivia': 'Valdivia',
-                'unicas': 'Ãnica',
-                'confort': 'Confort',
-                'aventura': 'Aventura',
-                'relax': 'Relax'
-            };
-            return labels[category] || category;
-        }
-
-        function renderExperiences(filter = 'all') {
-            const grid = document.getElementById('experiencesGrid');
-            const filtered = filter === 'all' ? experiences : experiences.filter(e => e.category === filter);
-            
-            grid.innerHTML = filtered.map(exp => {
-                const status = getStatus(exp.id);
-                return `
-                    <div class="experience-card" onclick="openModal('${exp.id}')">
-                        <div class="card-image">
-                            <span class="card-badge">${getCategoryLabel(exp.category)}</span>
-                            <span class="card-status status-${status}">
-                                ${status === 'available' ? 'Disponible' : 'Reservado'}
-                            </span>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">${exp.title}</h3>
-                            <p class="card-description">${exp.description}</p>
-                            <div class="card-footer">
-                                <span class="card-price">${formatPrice(exp.price)}</span>
-                                <button class="card-btn">Ver Detalles</button>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+        <title>Manuel & Naara 2026</title>
+        
+        <!-- Favicon -->
+        <link rel="icon" href="https://invitaciones.thewebsite.cl/wp-content/uploads/2024/07/cropped-FAV_IWS-1-32x32.png">
+        
+        <!-- CSS Esenciales del Tema -->
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/themes/phlox/css/base.css?ver=2.16.7'/>
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/themes/phlox/css/auxin-icon.css?ver=2.16.7'/>
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/themes/phlox/css/main.css?ver=2.16.7'/>
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/uploads/phlox/custom.css?ver=6.6'/>
+        
+        <!-- Elementor -->
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.25.6'/>
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/uploads/elementor/css/post-57.css?ver=1746119112'/>
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/uploads/elementor/css/post-53.css?ver=1746119112'/>
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/uploads/elementor/css/post-17523.css?ver=1756516106'/>
+        
+        <!-- Widgets Auxiliares (para aux-modern-heading-secondary) -->
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/plugins/auxin-elements/admin/assets/css/elementor-widgets.css?ver=2.16.4'/>
+        
+        <!-- Premium Addons (para el modal) -->
+        <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/uploads/premium-addons-elementor/pa-frontend-e5767667d.min.css?ver=1760929204'/>
+        
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap' rel='stylesheet'/>
+        <link href='https://fonts.googleapis.com/css?family=Capriola:400|Cormorant+SC:400|Cormorant+Infant:400|Gabriela:400|Corinthia:400&display=swap' rel='stylesheet'/>
+        
+        <!-- jQuery -->
+        <script src="https://invitaciones.thewebsite.cl/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+        <!-- Estilos CSS para la lista de deseos -->
+        <!-- Estilos CSS para la lista de deseos -->
+        <style>
+            /* Grid de regalos */
+.gift-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de regalo */
+.gift-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #f0f0f0;
+}
+
+.gift-card:active {
+    transform: scale(0.98);
+}
+
+/* Título del regalo */
+.gift-card h3 {
+    color: #E6B997;
+    font-size: 1.25rem;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    font-family: 'Cormorant SC', serif;
+    line-height: 1.3;
+}
+
+/* Descripción */
+.gift-card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+}
+
+/* Precio */
+.gift-price {
+    display: inline-block;
+    background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+/* Nota adicional */
+.gift-note {
+    text-align: center;
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: 20px auto 0;
+}
+
+.gift-note p {
+    color: #a58d6f;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    font-family: 'Cormorant Infant', serif;
+}
+
+/* Responsive para tablets */
+@media (min-width: 600px) {
+    .gift-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        padding: 40px 20px;
+    }
+}
+
+/* Responsive para desktop */
+@media (min-width: 992px) {
+    .gift-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        padding: 50px 20px;
+    }
+    
+    .gift-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(230, 185, 151, 0.3);
+        border-color: #E6B997;
+    }
+}        </style>
+    </head>
+    <body class="page-template-default page page-id-17523 elementor-default elementor-kit-53 elementor-page elementor-page-17523 phlox aux-dom-unready aux-full-width aux-resp aux-s-fhd  aux-page-animation-off _auxels" data-framed="">
+        <main id="main" class="aux-main aux-territory  aux-single aux-page aux-full-container no-sidebar aux-sidebar-style-border aux-user-entry">
+                <div class="aux-wrapper">
+                    <div class="aux-container aux-fold">
+                        <div id="primary" class="aux-primary">
+                            <div class="content" role="main">
+                                <article id="post-17523" class="post-17523 page type-page status-publish has-post-thumbnail hentry">
+                                    <div class="entry-main">
+                                        <div class="entry-content">
+                                            <div data-elementor-type="wp-post" data-elementor-id="17523" class="elementor elementor-17523">
+                                                
+                                                <section class="elementor-section elementor-top-section elementor-element elementor-element-3b5e32d elementor-section-full_width style="min-height: 60vh;" elementor-section-items-bottom elementor-section-content-bottom elementor-section-height-default" data-id="3b5e32d" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                    <div class="elementor-background-overlay"></div>
+                                                    <div class="elementor-container elementor-column-gap-default">
+                                                        <div class="aux-parallax-section elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6a8e9b7" data-id="6a8e9b7" data-element_type="column">
+                                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                                <div class="elementor-element elementor-element-0e4a056 elementor-widget elementor-widget-aux_modern_heading" data-id="0e4a056" data-element_type="widget" data-widget_type="aux_modern_heading.default">
+                                                                    <div class="elementor-widget-container">
+                                                                        <section class="aux-widget-modern-heading">
+                                                                            <div class="aux-widget-inner">
+                                                                                <h2 class="aux-modern-heading-primary">MANUEL &amp; NAARA</h2>
+                                                                                <h3 class="aux-modern-heading-secondary">
+                                                                                    <span class="aux-head-before">Lista de Deseos</span>
+                                                                                </h3>
+                                                                            </div>
+                                                                        </section>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                <section class="elementor-section elementor-top-section elementor-element elementor-section-full_width elementor-section-content-middle" data-id="lista-deseos" data-element_type="section" style="margin-bottom: 80px;" id="lista-deseos" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                    <div class="elementor-background-overlay"></div>
+                                                    <div class="elementor-container elementor-column-gap-default">
+                                                        <div class="aux-parallax-section elementor-column elementor-col-100 elementor-top-column elementor-element">
+                                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                                <!-- Grid de regalos -->
+                                                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+
+                                                                    <!-- Regalo 1: Cena Romántica en Hotel AWA -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Cena Romántica en Hotel AWA</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Cena gourmet de 5 tiempos con maridaje de vinos en restaurante con vista al lago Llanquihue</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$180.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 2: Paseo en Kayak -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Paseo en Kayak al Amanecer</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Tour privado en kayak por el lago Llanquihue con guía, desayuno incluido y vista a los volcanes</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$120.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 3: Spa de Pareja -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Spa de Pareja con Vista</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Masaje de piedras calientes para dos con acceso a piscinas termales y champagne</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$150.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 4: Tour Fotográfico -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Tour Fotográfico Profesional</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Sesión de fotos profesional en locaciones icónicas de Puerto Varas</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$200.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 5: Clase de Cocina -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Clase Privada de Cocina Chilena</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Clase de cocina con chef local, aprenderán a preparar curanto y postres tradicionales</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$95.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 6: Vuelo Panorámico -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Vuelo Panorámico sobre Volcanes</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Vuelo en avioneta de 45 minutos sobre volcanes Osorno, Calbuco y Tronador</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$280.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 7: Picnic Gourmet -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Picnic Gourmet en Frutillar</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Canasta premium con productos locales, manta y ubicación privilegiada frente al lago</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$75.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 8: Excursión a Cochamó -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Excursión a Cochamó</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Trekking guiado de día completo en el valle de Cochamó con almuerzo campestre</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$130.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 9: Paseo en Catamarán -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Paseo en Catamarán</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Tour de 3 horas navegando por los ríos Calle-Calle, Valdivia y Cruces, con once a bordo</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$85.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 10: Tour Cervecero -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Tour Cervecero Artesanal</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Visita a 3 cervecerías locales con degustación y maridaje de quesos</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$90.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 11: Cena en Castillo -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Cena en Castillo San Luis</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia gastronómica en castillo histórico con menú fusión chileno-alemán</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$160.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 12: Kayak Bioluminiscencia -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Kayak con Bioluminiscencia</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia única remando en aguas con microorganismos bioluminiscentes</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$110.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 13: Tour de Mercados -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Tour de Mercados</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Recorrido guiado gastronómico por mercados locales con degustaciones de mariscos frescos</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$65.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 14: Clase de Fotografía -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Clase de Fotografía</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Taller de fotografía en la Reserva Costera Valdiviana con fotógrafo profesional</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$125.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 15: Paseo a Caballo -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Paseo a Caballo</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Cabalgata de 2 horas por playa y bosque nativo con guía</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$80.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 16: Noche de Astronomía -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Noche de Astronomía</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Sesión privada de observación estelar con telescopio profesional y astrónomo experto</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$140.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 17: Taller de Cerámica -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Taller de Cerámica</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Clase de alfarería tradicional donde crearán sus propias piezas de recuerdo</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$70.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 18: Termas Escondidas -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Termas Escondidas</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia privada en termas naturales poco conocidas con guía local</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$115.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 19: Forrajeo y Cocina -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Forrajeo y Cocina</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Salida a recolectar ingredientes silvestres y luego cocinar con chef</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$145.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 20: Ritual de Temazcal -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Ritual de Temazcal</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Ceremonia ancestral de purificación en casa de piedra con guía espiritual</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$100.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 21: Upgrade de Habitación -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Upgrade de Habitación</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Mejora a suite con jacuzzi, vista panorámica y amenidades especiales</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$250.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 22: Desayuno de Lujo -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Desayuno de Lujo</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Desayuno gourmet servido en la habitación con champagne y fresas</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$55.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 23: Decoración Romántica -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Decoración Romántica</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Pétalos de rosa, velas aromáticas, chocolates artesanales y música ambiente</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$45.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 24: Mini Bar Premium -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Mini Bar Premium</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Selección de vinos chilenos premium, pisco, y snacks gourmet para la habitación</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$95.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 25: Rafting en Río Petrohué -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Rafting en Río Petrohué</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Descenso de rápidos clase III-IV con guías certificados y equipo completo</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$135.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 26: Canopy en Bosque Nativo -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Canopy en Bosque Nativo</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Circuito de tirolesas sobre selva valdiviana con 8 estaciones</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$105.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 27: Escalada en Roca -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Escalada en Roca</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Día de escalada deportiva en formaciones volcánicas con equipo e instructor</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$155.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 28: Día Completo de Spa -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Día Completo de Spa</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Circuito termal, masajes, tratamientos faciales y almuerzo saludable incluido</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$220.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 29: Yoga al Amanecer -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Yoga al Amanecer</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Clase de yoga y meditación frente al lago con instructor certificado</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$60.000</span>
+                                                                    </div>
+
+                                                                    <!-- Regalo 30: Baño de Bosque -->
+                                                                    <div style="background: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;">
+                                                                        <h3 style="color: #E6B997; font-size: 1.3rem; font-weight: 600; font-family: 'Cormorant SC', serif;">Baño de Bosque</h3>
+                                                                        <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Experiencia guiada de inmersión consciente en naturaleza para reducir estrés</p>
+                                                                        <span style="display: inline-block; background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 1.1rem;">$85.000</span>
+                                                                    </div>
+
+                                                                    <!-- Puedes mantener el resto de regalos con la misma estructura -->
+                                                                </div>
+
+                                                                <!-- Nota adicional -->
+<div style="text-align: center; padding: 30px 20px; max-width: 800px; margin: 30px auto 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+    <p style="color: #a58d6f; font-size: 1.3rem; line-height: 1.7; font-family: 'Cormorant Infant', serif; margin: 0; font-style: italic;">
+        <em>"Deléitate asimismo en Jehová, y Él te concederá las peticiones de tu corazón."</em>
+        <br>
+        <span style="display: block; margin-top: 10px; color: #b8a38a; font-size: 1.1rem;">— Salmo 37:4</span>
+    </p>
+</div>
+
+
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                <section class="elementor-section elementor-top-section elementor-element elementor-element-396fbf3 elementor-section-full_width elementor-section-content-middle elementor-section-height-default elementor-section-height-default"  data-id="396fbf3" data-element_type="section" id="lista" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                    <div class="elementor-background-overlay"></div>
+                                                    <div class="elementor-container elementor-column-gap-default">
+                                                        <div class="aux-parallax-section elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-8ba59eb" data-id="8ba59eb" data-element_type="column">
+                                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                                <div class="elementor-element elementor-element-71d1525 vector-animated elementor-widget elementor-widget-html" data-id="71d1525" data-element_type="widget" data-widget_type="html.default">
+                                                                    <div class="elementor-widget-container">
+                                                                        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                                                        <lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="loop" delay="0100" colors="primary:#E6B997,secondary:#E6B997" style="width:150px;height:150px"></lord-icon>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="elementor-element elementor-element-1748970 elementor-widget elementor-widget-aux_modern_heading" data-id="1748970" data-element_type="widget" data-widget_type="aux_modern_heading.default">
+                                                                    <div class="elementor-widget-container">
+                                                                        <section class="aux-widget-modern-heading">
+                                                                            <div class="aux-widget-inner">
+                                                                                <h2 class="aux-modern-heading-primary">REGALOS</h2>
+                                                                                <div class="aux-modern-heading-description">
+                                                                                    <p>Con gratitud en nuestros corazones, damos gracias a Dios por su amor y por rodearnos de personas tan especiales como ustedes. Cada detalle y muestra de cariño será una bendición en este nuevo comienzo que Él nos permite vivir juntos.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </section>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="aux-parallax-section elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-7345643" data-id="7345643" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                                <div class="elementor-element elementor-element-4b30368 elementor-widget elementor-widget-spacer" data-id="4b30368" data-element_type="widget" data-widget_type="spacer.default">
+                                                                    <div class="elementor-widget-container">
+                                                                        <div class="elementor-spacer">
+                                                                            <div class="elementor-spacer-inner"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                
+                                                <section class="elementor-section elementor-top-section elementor-element elementor-element-1094527 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1094527" data-element_type="section">
+                                                    <div class="elementor-container elementor-column-gap-default">
+                                                        <div class="aux-parallax-section elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-dbc1fa9" data-id="dbc1fa9" data-element_type="column">
+                                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                                <div class="elementor-element elementor-element-de96e02 elementor-fixed elementor-widget elementor-widget-html" data-id="de96e02" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;fixed&quot;}" data-widget_type="html.default">
+                                                                    <div class="elementor-widget-container">
+                                                                        <div style="display: flex; justify-content: center; align-items: center;">
+                                                                            <!-- Botón con ícono de nota musical -->
+                                                                            <button id="playPauseBtn" style="
+    background-color: white;
+    border: 2px solid #E6B997;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;">
+                                                                                <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-music">
+                                                                                    <path d="M9 18V5l12-2v13"></path>
+                                                                                    <circle cx="6" cy="18" r="3"></circle>
+                                                                                    <circle cx="18" cy="16" r="3"></circle>
+                                                                                </svg>
+                                                                            </button>
+                                                                            <!-- Archivo de audio -->
+                                                                            <audio id="audioPlayer" src="https://invitaciones.thewebsite.cl/wp-content/uploads/2025/07/Lifehouse-You-And-Me.mp3" autoplay loop></audio>
+                                                                        </div>
+                                                                        <script>
+                                                                            document.getElementById('playPauseBtn').addEventListener('click', function() {
+                                                                                var audioPlayer = document.getElementById('audioPlayer');
+                                                                                var musicIcon = document.getElementById('musicIcon');
+
+                                                                                if (audioPlayer.paused) {
+                                                                                    audioPlayer.play();
+                                                                                    musicIcon.style.opacity = '1';
+                                                                                    /* Cambia la opacidad si lo necesitas */
+                                                                                } else {
+                                                                                    audioPlayer.pause();
+                                                                                    musicIcon.style.opacity = '0.5';
+                                                                                    /* Ejemplo de cambio visual cuando se pausa */
+                                                                                }
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!-- end article section -->
+                                        <footer class="entry-meta"></footer>
+                                        <!-- end article footer -->
+                                    </div>
+                                </article>
+                                <!-- You can start editing here. -->
                             </div>
-                            <p class="card-id">${exp.id}</p>
+                            <!-- end content -->
                         </div>
+                        <!-- end primary -->
                     </div>
-                `;
-            }).join('');
-        }
+                    <!-- end container -->
+                </div>
+                <!-- end wrapper -->
+            </main>
+            <!-- end main -->
+            <footer class="aux-elementor-footer" itemscope="itemscope" itemtype="https://schema.org/WPFooter" role="contentinfo">
+                <div class="aux-wrapper">
+                    <div data-elementor-type="footer" data-elementor-id="57" class="elementor elementor-57">
+                        <section class="elementor-section elementor-top-section elementor-element elementor-element-8ac7a38 elementor-section-boxed elementor-section-height-default" data-id="8ac7a38" data-element_type="section" data-settings='{"background_background":"classic"}'>
+                            <div class="elementor-container elementor-column-gap-default">
+                                <div class="aux-parallax-section elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-01ab0f9" data-id="01ab0f9" data-element_type="column">
+                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                        <div class="elementor-element elementor-element-4ae4d7f elementor-widget elementor-widget-aux_copyright" data-id="4ae4d7f" data-element_type="widget" data-widget_type="aux_copyright.default">
+                                            <div class="elementor-widget-container">
+                                                <small>Derechos reservados © 2025.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </footer>
 
-        function openModal(id) {
-            const exp = experiences.find(e => e.id === id);
-            currentGift = exp;
-            
-            document.getElementById('modalTitle').textContent = exp.title;
-            document.getElementById('modalDescription').textContent = exp.description;
-            document.getElementById('modalPrice').textContent = formatPrice(exp.price);
-            document.getElementById('modalId').textContent = exp.id;
-            
-            document.getElementById('modal').classList.add('active');
-        }
+            </div><!-- end #inner-body -->
 
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-        }
-
-        function copyGiftId() {
-            const id = document.getElementById('modalId').textContent;
-            navigator.clipboard.writeText(id);
-            alert('Â¡CÃ³digo copiado al portapapeles!');
-        }
-
-        function reserveGift() {
-            if (!currentGift) return;
-            
-            const reserved = JSON.parse(localStorage.getItem('reservedGifts') || '[]');
-            if (!reserved.includes(currentGift.id)) {
-                reserved.push(currentGift.id);
-                localStorage.setItem('reservedGifts', JSON.stringify(reserved));
-                createConfetti();
-                alert('Â¡Gracias por tu regalo! ð');
-                closeModal();
-                renderExperiences();
-            } else {
-                alert('Este regalo ya estÃ¡ reservado');
-            }
-        }
-
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.background = ['#667eea', '#764ba2', '#f093fb', '#4facfe'][Math.floor(Math.random() * 4)];
-                confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3000);
-            }
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            document.querySelector('.dark-mode-toggle').textContent = isDark ? 'âï¸' : 'ð';
-            localStorage.setItem('darkMode', isDark);
-        }
-
-        // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                renderExperiences(this.dataset.category);
-            });
-        });
-
-        // Close modal on outside click
-        document.getElementById('modal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-
-        // Initialize
-        window.addEventListener('DOMContentLoaded', () => {
-            renderExperiences();
-            
-            // Restore dark mode preference
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-                document.querySelector('.dark-mode-toggle').textContent = 'âï¸';
-            }
-            
-            // Smooth scroll
-            document.querySelector('.scroll-indicator').addEventListener('click', () => {
-                document.querySelector('.timeline-section').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-    </script>
-</body>
+    </body>
 </html>
+<!-- FIN -->
 
