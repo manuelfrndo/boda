@@ -159,7 +159,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 40px;
+    padding: 40px 40px 80px 40px;
 }
 
 .preloader-content {
@@ -241,6 +241,12 @@
     .preloader-icon {
         font-size: 3rem;
     }
+    <!--Separador entre categorías-->
+    .gift-separator {
+        max-width: 1200px;
+        margin: 60px auto;
+        border-top: 1px solid #eee;
+}
 }
 </style>
     </head>
@@ -311,7 +317,7 @@
 <section class="elementor-section elementor-top-section elementor-element elementor-section-full_width" 
          data-id="seccion-formulario" 
          data-element_type="section" 
-         style="padding: 60px 20px; background-color: #fdf7f0; text-align: center;">
+         style="padding: 60px 20px; background-color: #fdf7f0; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 -10px 30px rgba(0, 0, 0, 0.1);">
 
     <div class="elementor-container elementor-column-gap-default">
         <div class="elementor-column elementor-col-100 elementor-top-column" data-id="col-formulario" data-element_type="column">
@@ -345,124 +351,174 @@
     </div>
 </section>
                                                 <!-- Sección: Lista de regalos -->
+<!-- Sección: Lista de regalos -->
 <section class="elementor-section elementor-top-section lista-deseos elementor-section-full_width" data-id="lista-deseos" data-element_type="section">
     <div class="elementor-container elementor-column-gap-default">
         <div class="elementor-column elementor-col-100 elementor-top-column">
             <div class="elementor-widget-wrap">
 
-                <!-- Grid de regalos -->
+                <!-- TÍTULO: EXPERIENCIAS -->
+                <div class="gift-note" style="margin-top: 20px; margin-bottom: 20px; border: none;">
+                    <p style="font-size: 2.5rem; color: #E6B997; margin-bottom: 10px;">
+                        ✨ Experiencias Inolvidables
+                    </p>
+                    <span style="font-size: 1.1rem;">Momentos especiales para compartir y crear recuerdos juntos</span>
+                </div>
+
+                <!-- Grid de experiencias -->
                 <div class="gift-grid">
-                                                                                        <!-- Regalo 1: Cena Romántica en Hotel AWA -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Cena Romántica en Hotel AWA</h3>
-                                                                        <p>Cena gourmet de 5 tiempos con maridaje de vinos en restaurante con vista al lago Llanquihue</p>
-                                                                        <span class="gift-price">$180.000</span>
-                                                                    </div>
+                    <!-- Regalo 1: Excursión al Volcán Osorno -->
+                    <div class="gift-card">
+                        <h3>🌋 Excursión al Volcán Osorno y Lago Todos los Santos</h3>
+                        <p>Tour guiado con traslados, miradores y visita a Petrohué.</p>
+                        <span class="gift-price">$70.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 2: Paseo en Kayak -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Paseo en Kayak al Amanecer</h3>
-                                                                        <p>Tour privado en kayak por el lago Llanquihue con guía, desayuno incluido y vista a los volcanes</p>
-                                                                        <span class="gift-price">$120.000</span>
-                                                                    </div>
+                    <!-- Regalo 2: Cena romántica Casa Valdés -->
+                    <div class="gift-card">
+                        <h3>🍷 Cena romántica en Casa Valdés (Puerto Varas)</h3>
+                        <p>Cena gourmet frente al lago con vino incluido.</p>
+                        <span class="gift-price">$65.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 3: Spa de Pareja -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Spa de Pareja con Vista</h3>
-                                                                        <p>Masaje de piedras calientes para dos con acceso a piscinas termales y champagne</p>
-                                                                        <span class="gift-price">$150.000</span>
-                                                                    </div>
+                    <!-- Regalo 3: Día de spa -->
+                    <div class="gift-card">
+                        <h3>💆‍♀️ Día de spa en Termas de Ralún o Termas de Puyehue</h3>
+                        <p>Acceso a termas, sauna y masaje relajante.</p>
+                        <span class="gift-price">$100.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 4: Tour Fotográfico -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Tour Fotográfico Profesional</h3>
-                                                                        <p>Sesión de fotos profesional en locaciones icónicas de Puerto Varas</p>
-                                                                        <span class="gift-price">$200.000</span>
-                                                                    </div>
+                    <!-- Regalo 4: Noche romántica en cabaña -->
+                    <div class="gift-card">
+                        <h3>🌅 Noche romántica en cabaña boutique (Ensenada o Futrono)</h3>
+                        <p>Alojamiento con jacuzzi o tina caliente, desayuno incluido.</p>
+                        <span class="gift-price">$135.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 5: Clase de Cocina -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Clase Privada de Cocina Chilena</h3>
-                                                                        <p>Clase de cocina con chef local, aprenderán a preparar curanto y postres tradicionales</p>
-                                                                        <span class="gift-price">$95.000</span>
-                                                                    </div>
+                    <!-- Regalo 5: Kayak -->
+                    <div class="gift-card">
+                        <h3>🛶 Kayak en el Lago Panguipulli o Río Petrohué</h3>
+                        <p>Paseo guiado con equipo, fotos y snack.</p>
+                        <span class="gift-price">$45.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 6: Vuelo Panorámico -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Vuelo Panorámico sobre Volcanes</h3>
-                                                                        <p>Vuelo en avioneta de 45 minutos sobre volcanes Osorno, Calbuco y Tronador</p>
-                                                                        <span class="gift-price">$280.000</span>
-                                                                    </div>
+                    <!-- Regalo 6: Tour cervecero -->
+                    <div class="gift-card">
+                        <h3>🍺 Tour cervecero en Valdivia (Kunstmann o Bundor)</h3>
+                        <p>Degustación guiada con picoteo y souvenir.</p>
+                        <span class="gift-price">$50.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 7: Picnic Gourmet -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Picnic Gourmet en Frutillar</h3>
-                                                                        <p>Canasta premium con productos locales, manta y ubicación privilegiada frente al lago</p>
-                                                                        <span class="gift-price">$75.000</span>
-                                                                    </div>
+                    <!-- Regalo 7: Parque Nacional Alerce Andino -->
+                    <div class="gift-card">
+                        <h3>🌲 Visita guiada al Parque Nacional Alerce Andino</h3>
+                        <p>Trekking romántico con picnic preparado.</p>
+                        <span class="gift-price">$60.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 8: Excursión a Cochamó -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Excursión a Cochamó</h3>
-                                                                        <p>Trekking guiado de día completo en el valle de Cochamó con almuerzo campestre</p>
-                                                                        <span class="gift-price">$130.000</span>
-                                                                    </div>
+                    <!-- Regalo 8: Escapada de fin de semana -->
+                    <div class="gift-card">
+                        <h3>🏡 Escapada de fin de semana en Niebla o Lago Ranco</h3>
+                        <p>2 noches de alojamiento con desayuno.</p>
+                        <span class="gift-price">$180.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 9: Paseo en Catamarán -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Paseo en Catamarán</h3>
-                                                                        <p>Tour de 3 horas navegando por los ríos Calle-Calle, Valdivia y Cruces, con once a bordo</p>
-                                                                        <span class="gift-price">$85.000</span>
-                                                                    </div>
+                    <!-- Regalo 9: Cena con maridaje -->
+                    <div class="gift-card">
+                        <h3>🍽️ Cena con maridaje en Espantapájaros (Frutillar)</h3>
+                        <p>Menú de 3 tiempos con vino y postre artesanal.</p>
+                        <span class="gift-price">$65.000</span>
+                    </div>
+                </div>
 
-                                                                    <!-- Regalo 10: Tour Cervecero -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Tour Cervecero Artesanal</h3>
-                                                                        <p>Visita a 3 cervecerías locales con degustación y maridaje de quesos</p>
-                                                                        <span class="gift-price">$90.000</span>
-                                                                    </div>
+                <!-- SEPARADOR -->
+                <div class="gift-separator"></div>
 
-                                                                    <!-- Regalo 11: Cena en Castillo -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Cena en Castillo San Luis</h3>
-                                                                        <p>Experiencia gastronómica en castillo histórico con menú fusión chileno-alemán</p>
-                                                                        <span class="gift-price">$160.000</span>
-                                                                    </div>
+                <!-- TÍTULO: PARA NUESTRO HOGAR -->
+                <div class="gift-note" style="margin-top: 20px; margin-bottom: 20px; border: none;">
+                    <p style="font-size: 2.5rem; color: #E6B997; margin-bottom: 10px;">
+                        🏠 Para Nuestro Hogar
+                    </p>
+                    <span style="font-size: 1.1rem;">Elementos esenciales para comenzar nuestra vida juntos</span>
+                </div>
 
-                                                                    <!-- Regalo 12: Kayak Bioluminiscencia -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Kayak con Bioluminiscencia</h3>
-                                                                        <p>Experiencia única remando en aguas con microorganismos bioluminiscentes</p>
-                                                                        <span class="gift-price">$110.000</span>
-                                                                    </div>
+                <!-- Grid de regalos para el hogar -->
+                <div class="gift-grid">
+                    <!-- Regalo 10: Set de ollas -->
+                    <div class="gift-card">
+                        <h3>Set de ollas de acero inoxidable</h3>
+                        <p>6 piezas, aptas para cocina eléctrica y a gas.</p>
+                        <span class="gift-price">$120.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 13: Tour de Mercados -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Tour de Mercados</h3>
-                                                                        <p>Recorrido guiado gastronómico por mercados locales con degustaciones de mariscos frescos</p>
-                                                                        <span class="gift-price">$65.000</span>
-                                                                    </div>
+                    <!-- Regalo 11: Juego de sábanas -->
+                    <div class="gift-card">
+                        <h3>Juego de sábanas premium (2 plazas)</h3>
+                        <p>Algodón 400 hilos, suaves y duraderas.</p>
+                        <span class="gift-price">$90.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 14: Clase de Fotografía -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Clase de Fotografía</h3>
-                                                                        <p>Taller de fotografía en la Reserva Costera Valdiviana con fotógrafo profesional</p>
-                                                                        <span class="gift-price">$125.000</span>
-                                                                    </div>
+                    <!-- Regalo 12: Juguera eléctrica -->
+                    <div class="gift-card">
+                        <h3>Juguera eléctrica de alta potencia</h3>
+                        <p>Ideal para jugos naturales o batidos diarios.</p>
+                        <span class="gift-price">$75.000</span>
+                    </div>
 
-                                                                    <!-- Regalo 15: Paseo a Caballo -->
-                                                                    <div class="gift-card">
-                                                                        <h3>Paseo a Caballo</h3>
-                                                                        <p>Cabalgata de 2 horas por playa y bosque nativo con guía</p>
-                                                                        <span class="gift-price">$80.000</span>
-                                                                    </div>
+                    <!-- Regalo 13: Set de toallas -->
+                    <div class="gift-card">
+                        <h3>Set de toallas de baño (6 piezas)</h3>
+                        <p>Algodón egipcio, textura extra suave.</p>
+                        <span class="gift-price">$65.000</span>
+                    </div>
 
+                    <!-- Regalo 14: Juego de copas -->
+                    <div class="gift-card">
+                        <h3>Juego de copas para vino (6 unidades)</h3>
+                        <p>Elegantes, de cristal, para cenas románticas.</p>
+                        <span class="gift-price">$45.000</span>
+                    </div>
+
+                    <!-- Regalo 15: Cafetera -->
+                    <div class="gift-card">
+                        <h3>Cafetera italiana o prensa francesa</h3>
+                        <p>De acero inoxidable, clásica y duradera.</p>
+                        <span class="gift-price">$60.000</span>
+                    </div>
+
+                    <!-- Regalo 16: Set de utensilios -->
+                    <div class="gift-card">
+                        <h3>Set de utensilios de cocina (10 piezas)</h3>
+                        <p>Cucharones, espátulas y pinzas en acero y silicona.</p>
+                        <span class="gift-price">$50.000</span>
+                    </div>
+
+                    <!-- Regalo 17: Plantas decorativas -->
+                    <div class="gift-card">
+                        <h3>Plantas decorativas o maceteros</h3>
+                        <p>Para dar vida y frescura al hogar.</p>
+                        <span class="gift-price">$40.000</span>
+                    </div>
+
+                    <!-- Regalo 18: Lámpara de pie -->
+                    <div class="gift-card">
+                        <h3>Lámpara de pie moderna</h3>
+                        <p>De madera o metal, aporta luz cálida.</p>
+                        <span class="gift-price">$110.000</span>
+                    </div>
+
+                    <!-- Regalo 19: Juego de platos -->
+                    <div class="gift-card">
+                        <h3>Juego de platos y bowls de cerámica</h3>
+                        <p>Servicio artesanal para 4 personas, elegante.</p>
+                        <span class="gift-price">$95.000</span>
+                    </div>
                 </div>
 
                 <!-- Nota adicional / versículo -->
                 <div class="gift-note">
                     <p>
-                        <em>“Deléitate asimismo en Jehová, y Él te concederá las peticiones de tu corazón.”</em>
+                        <em>"Deléitate asimismo en Jehová, y Él te concederá las peticiones de tu corazón."</em>
                         <br>
                         <span>— Salmo 37:4</span>
                     </p>
