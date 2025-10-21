@@ -6,7 +6,8 @@
         <title>Manuel & Naara 2026</title>
         
         <!-- Favicon -->
-        <link rel="icon" href="https://invitaciones.thewebsite.cl/wp-content/uploads/2024/07/cropped-FAV_IWS-1-32x32.png">
+        <link rel="icon" href="https://i.imgur.com/xyGemmm.png" type="image/png">
+
         
         <!-- CSS Esenciales del Tema -->
         <link rel='stylesheet' href='https://invitaciones.thewebsite.cl/wp-content/themes/phlox/css/base.css?ver=2.16.7'/>
@@ -32,7 +33,6 @@
         
         <!-- jQuery -->
         <script src="https://invitaciones.thewebsite.cl/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
-        <!-- Estilos CSS para la lista de deseos -->
         <!-- Estilos CSS para la lista de deseos -->
         <!-- CSS -->
 <style>
@@ -128,10 +128,155 @@
         grid-template-columns: repeat(3, 1fr);
     }
 }
+.preloader-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #fdf7f0 0%, #f5ebe0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader-section.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-container {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    min-height: 600px;
+    background-image: url('https://i.imgur.com/nA3VN1X.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+}
+
+.preloader-content {
+    text-align: center;
+    animation: fadeInUp 1s ease;
+    width: 100%;
+}
+
+.preloader-icon {
+    font-size: 4rem;
+    color: #E6B997;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.preloader-text h2 {
+    font-family: 'Cormorant SC', serif;
+    font-size: 3rem;
+    color: #E6B997;
+    margin: 20px 0;
+}
+
+.preloader-text h3 {
+    font-family: 'Cormorant Infant', serif;
+    font-size: 1.2rem;
+    color: #a58d6f;
+    margin: 15px 0;
+}
+
+.btn-ingresar {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #E6B997 0%, #d4a47f 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-ingresar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230, 185, 151, 0.4);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .preloader-container {
+        max-width: 400px;
+        min-height: 500px;
+        padding: 50px 30px;
+    }
+    
+    .preloader-text h2 {
+        font-size: 2.2rem;
+    }
+    
+    .preloader-text h3 {
+        font-size: 1rem;
+    }
+    
+    .preloader-icon {
+        font-size: 3rem;
+    }
+}
 </style>
     </head>
     <body class="page-template-default page page-id-17523 elementor-default elementor-kit-53 elementor-page elementor-page-17523 phlox aux-dom-unready aux-full-width aux-resp aux-s-fhd  aux-page-animation-off _auxels" data-framed="">
-        <main id="main" class="aux-main aux-territory  aux-single aux-page aux-full-container no-sidebar aux-sidebar-style-border aux-user-entry">
+    
+    <!-- PRELOADER - Coloca esto aquí -->
+    <!-- PRELOADER - Coloca esto aquí -->
+<section class="preloader-section">
+    <div class="preloader-container">
+        <div class="preloader-content">
+            <!-- Icono -->
+            <div class="preloader-icon">
+                <i class="fas fa-dove"></i>
+            </div>
+            
+            <!-- Textos -->
+            <div class="preloader-text">
+                <h3>BIENVENIDOS A LA LISTA DE DESEOS DE</h3>
+                <h2>MANUEL & NAARA</h2>
+                <h3>16 · ENERO · 2026</h3>
+            </div>
+            
+            <!-- Botón -->
+            <div class="preloader-button">
+                <a href="#" class="btn-ingresar" id="btn-ingresar">
+                    <span>Ingresar</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FIN PRELOADER -->
+    <!-- FIN PRELOADER -->
+
+    <main id="main" class="aux-main aux-territory  aux-single aux-page aux-full-container no-sidebar aux-sidebar-style-border aux-user-entry">
+        <!-- El resto de tu contenido continúa aquí... -->
                 <div class="aux-wrapper">
                     <div class="aux-container aux-fold">
                         <div id="primary" class="aux-primary">
@@ -152,7 +297,7 @@
                                                                             <div class="aux-widget-inner">
                                                                                 <h2 class="aux-modern-heading-primary">MANUEL &amp; NAARA</h2>
                                                                                 <h3 class="aux-modern-heading-secondary">
-                                                                                    <span class="aux-head-before">Lista de Deseos</span>
+                                                                                    <span style="font-family: 'Cormorant Infant', serif; color: #a58d6f; font-size: 3rem; margin-bottom: 40px;">Lista de Deseos</span>
                                                                                 </h3>
                                                                             </div>
                                                                         </section>
@@ -199,7 +344,6 @@
         </div>
     </div>
 </section>
-
                                                 <!-- Sección: Lista de regalos -->
 <section class="elementor-section elementor-top-section lista-deseos elementor-section-full_width" data-id="lista-deseos" data-element_type="section">
     <div class="elementor-container elementor-column-gap-default">
@@ -328,6 +472,8 @@
         </div>
     </div>
 </section>
+
+
                                                 <section class="elementor-section elementor-top-section elementor-element elementor-element-396fbf3 elementor-section-full_width elementor-section-content-middle elementor-section-height-default elementor-section-height-default"  data-id="396fbf3" data-element_type="section" id="lista" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                                     <div class="elementor-background-overlay"></div>
                                                     <div class="elementor-container elementor-column-gap-default">
@@ -453,9 +599,16 @@
             </footer>
 
             </div><!-- end #inner-body -->
-
+	    <script>
+    document.getElementById('btn-ingresar').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('.preloader-section').classList.add('hidden');
+        // Iniciar música si existe
+        const audio = document.getElementById('audioPlayer');
+        if(audio) audio.play();
+    });
+    </script>
     </body>
 </html>
 <!-- FIN -->
-
 
