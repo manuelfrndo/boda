@@ -41,7 +41,7 @@
     background: #f0f9f0;
     border-left: 3px solid #4CAF50;
     padding: 8px 12px;
-    margin: 15px 0 10px 0;
+    margin: 20px 0 10px 0;
     border-radius: 4px;
 }
 
@@ -207,6 +207,17 @@
     border-bottom: 2px solid #eee;
 
 }
+@media (max-width: 768px) {
+    .preloader-section {
+        align-items: flex-start; /* pega arriba */
+        padding-top: 50px;       /* ajusta espacio superior a tu gusto */
+    }
+
+    .preloader-container {
+        min-height: auto;        /* opcional: para que no ocupe toda la altura */
+        padding: 20px;           /* ajusta padding interno si quieres */
+    }
+}
 
 .btn-ingresar {
     display: inline-block;
@@ -260,6 +271,7 @@
     .preloader-icon {
         font-size: 3rem;
     }
+    <!--Separador entre categorías-->
     .gift-separator {
         max-width: 1200px;
         margin: 60px auto;
@@ -415,12 +427,33 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(230, 185, 151, 0.3);
 }
+/* Código de referencia */
+.gift-code {
+    display: inline-block;
+    background: #f5f5f5;
+    border: 2px dashed #E6B997;
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.gift-instruction {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    margin: 8px 0;
+    line-height: 1.4;
+}
 </style>
     </head>
     <body class="page-template-default page page-id-17523 elementor-default elementor-kit-53 elementor-page elementor-page-17523 phlox aux-dom-unready aux-full-width aux-resp aux-s-fhd  aux-page-animation-off _auxels" data-framed="">
     
     <!-- PRELOADER - Coloca esto aquí -->
-    <!-- PRELOADER - Coloca esto aquí -->
+     <!-- PRELOADER - Coloca esto aquí -->
 <section class="preloader-section">
     <div class="preloader-container">
         <div class="preloader-content">
@@ -543,140 +576,142 @@
 
                 <!-- Grid de experiencias -->
 <div class="gift-grid">
-    <!-- Regalo 1: Excursión al Volcán Osorno -->
+<!-- Regalo 1: Excursión al Volcán Osorno -->
     <div class="gift-card" data-gift-id="exp-1">
         <h3>🌋 Excursión al Volcán Osorno y Lago Todos los Santos</h3>
         <p>Tour guiado con traslados, miradores y visita a Petrohué.</p>
         <span class="gift-price">$70.000</span>
+        <span class="gift-code">EXP-VOLCAN</span>
         <div class="gift-actions">
             <button class="btn-reserve" onclick="reserveGift('exp-1', 'Excursión al Volcán Osorno')">
                 Reservar
             </button>
-            <button class="btn-bank" onclick="showBankModal('Excursión al Volcán Osorno')">
+            <button class="btn-bank" onclick="showBankModal('Excursión al Volcán Osorno', 'exp-1')">
                 Ver Datos Bancarios
             </button>
         </div>
     </div>
 
-    <!-- Regalo 2: Cena romántica Casa Valdés -->
-    <div class="gift-card" data-gift-id="exp-2">
-        <h3>🍷 Cena romántica en Casa Valdés (Puerto Varas)</h3>
-        <p>Cena gourmet frente al lago con vino incluido.</p>
-        <span class="gift-price">$65.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-2', 'Cena romántica en Casa Valdés')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Cena romántica en Casa Valdés')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-2">
+    <h3>🍷 Cena romántica en Casa Valdés (Puerto Varas)</h3>
+    <p>Cena gourmet frente al lago con vino incluido.</p>
+    <span class="gift-price">$65.000</span>
+    <span class="gift-code">EXP-VALDES</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-2', 'Cena romántica en Casa Valdés')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Cena romántica en Casa Valdés', 'exp-2')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 3: Día de spa -->
-    <div class="gift-card" data-gift-id="exp-3">
-        <h3>💆‍♀️ Día de spa en Termas de Ralún o Termas de Puyehue</h3>
-        <p>Acceso a termas, sauna y masaje relajante.</p>
-        <span class="gift-price">$100.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-3', 'Día de spa en Termas')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Día de spa en Termas')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-3">
+    <h3>💆‍♀️ Día de spa en Termas de Ralún o Termas de Puyehue</h3>
+    <p>Acceso a termas, sauna y masaje relajante.</p>
+    <span class="gift-price">$100.000</span>
+    <span class="gift-code">EXP-TERMAS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-3', 'Día de spa en Termas')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Día de spa en Termas', 'exp-3')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 4: Noche romántica en cabaña -->
-    <div class="gift-card" data-gift-id="exp-4">
-        <h3>🌅 Noche romántica en cabaña boutique (Ensenada o Futrono)</h3>
-        <p>Alojamiento con jacuzzi o tina caliente, desayuno incluido.</p>
-        <span class="gift-price">$135.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-4', 'Noche romántica en cabaña')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Noche romántica en cabaña')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-4">
+    <h3>🌅 Noche romántica en cabaña boutique (Ensenada o Futrono)</h3>
+    <p>Alojamiento con jacuzzi o tina caliente, desayuno incluido.</p>
+    <span class="gift-price">$135.000</span>
+    <span class="gift-code">EXP-CABANA</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-4', 'Noche romántica en cabaña')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Noche romántica en cabaña', 'exp-4')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 5: Kayak -->
-    <div class="gift-card" data-gift-id="exp-5">
-        <h3>🛶 Kayak en el Lago Panguipulli o Río Petrohué</h3>
-        <p>Paseo guiado con equipo, fotos y snack.</p>
-        <span class="gift-price">$45.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-5', 'Kayak en el Lago')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Kayak en el Lago')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-5">
+    <h3>🛶 Kayak en el Lago Panguipulli o Río Petrohué</h3>
+    <p>Paseo guiado con equipo, fotos y snack.</p>
+    <span class="gift-price">$45.000</span>
+    <span class="gift-code">EXP-KAYAK</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-5', 'Kayak en el Lago')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Kayak en el Lago', 'exp-5')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 6: Tour cervecero -->
-    <div class="gift-card" data-gift-id="exp-6">
-        <h3>🍺 Tour cervecero en Valdivia (Kunstmann o Bundor)</h3>
-        <p>Degustación guiada con picoteo y souvenir.</p>
-        <span class="gift-price">$50.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-6', 'Tour cervecero en Valdivia')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Tour cervecero en Valdivia')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-6">
+    <h3>🍺 Tour cervecero en Valdivia (Kunstmann o Bundor)</h3>
+    <p>Degustación guiada con picoteo y souvenir.</p>
+    <span class="gift-price">$50.000</span>
+    <span class="gift-code">EXP-CERVEZA</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-6', 'Tour cervecero en Valdivia')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Tour cervecero en Valdivia', 'exp-6')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 7: Parque Nacional Alerce Andino -->
-    <div class="gift-card" data-gift-id="exp-7">
-        <h3>🌲 Visita guiada al Parque Nacional Alerce Andino</h3>
-        <p>Trekking romántico con picnic preparado.</p>
-        <span class="gift-price">$60.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-7', 'Visita al Parque Nacional')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Visita al Parque Nacional')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-7">
+    <h3>🌲 Visita guiada al Parque Nacional Alerce Andino</h3>
+    <p>Trekking romántico con picnic preparado.</p>
+    <span class="gift-price">$60.000</span>
+    <span class="gift-code">EXP-ALERCE</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-7', 'Visita al Parque Nacional')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Visita al Parque Nacional', 'exp-7')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 8: Escapada de fin de semana -->
-    <div class="gift-card" data-gift-id="exp-8">
-        <h3>🏡 Escapada de fin de semana en Niebla o Lago Ranco</h3>
-        <p>2 noches de alojamiento con desayuno.</p>
-        <span class="gift-price">$180.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-8', 'Escapada de fin de semana')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Escapada de fin de semana')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-8">
+    <h3>🏡 Escapada de fin de semana en Niebla o Lago Ranco</h3>
+    <p>2 noches de alojamiento con desayuno.</p>
+    <span class="gift-price">$180.000</span>
+    <span class="gift-code">EXP-FINSEM</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-8', 'Escapada de fin de semana')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Escapada de fin de semana', 'exp-8')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 9: Cena con maridaje -->
-    <div class="gift-card" data-gift-id="exp-9">
-        <h3>🍽️ Cena con maridaje en Espantapájaros (Frutillar)</h3>
-        <p>Menú de 3 tiempos con vino y postre artesanal.</p>
-        <span class="gift-price">$65.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('exp-9', 'Cena con maridaje')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Cena con maridaje')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="exp-9">
+    <h3>🍽️ Cena con maridaje en Espantapájaros (Frutillar)</h3>
+    <p>Menú de 3 tiempos con vino y postre artesanal.</p>
+    <span class="gift-price">$65.000</span>
+    <span class="gift-code">EXP-MARIDAJE</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('exp-9', 'Cena con maridaje')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Cena con maridaje', 'exp-9')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
+
 </div>
 
 <!-- SEPARADOR -->
@@ -694,153 +729,155 @@
 <div class="gift-grid">
     <!-- Regalo 10: Set de ollas -->
     <div class="gift-card" data-gift-id="hogar-1">
-        <h3>Set de ollas de acero inoxidable</h3>
-        <p>6 piezas, aptas para cocina eléctrica y a gas.</p>
-        <span class="gift-price">$120.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-1', 'Set de ollas de acero')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Set de ollas de acero')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+    <h3>Set de ollas de acero inoxidable</h3>
+    <p>6 piezas, aptas para cocina eléctrica y a gas.</p>
+    <span class="gift-price">$120.000</span>
+    <span class="gift-code">HOG-OLLAS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-1', 'Set de ollas de acero')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Set de ollas de acero', 'hogar-1')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 11: Juego de sábanas -->
-    <div class="gift-card" data-gift-id="hogar-2">
-        <h3>Juego de sábanas premium (2 plazas)</h3>
-        <p>Algodón 400 hilos, suaves y duraderas.</p>
-        <span class="gift-price">$90.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-2', 'Juego de sábanas premium')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Juego de sábanas premium')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-2">
+    <h3>Juego de sábanas premium (2 plazas)</h3>
+    <p>Algodón 400 hilos, suaves y duraderas.</p>
+    <span class="gift-price">$90.000</span>
+    <span class="gift-code">HOG-SABANAS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-2', 'Juego de sábanas premium')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Juego de sábanas premium', 'hogar-2')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 12: Juguera eléctrica -->
-    <div class="gift-card" data-gift-id="hogar-3">
-        <h3>Juguera eléctrica de alta potencia</h3>
-        <p>Ideal para jugos naturales o batidos diarios.</p>
-        <span class="gift-price">$75.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-3', 'Juguera eléctrica')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Juguera eléctrica')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-3">
+    <h3>Juguera eléctrica de alta potencia</h3>
+    <p>Ideal para jugos naturales o batidos diarios.</p>
+    <span class="gift-price">$75.000</span>
+    <span class="gift-code">HOG-JUGUERA</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-3', 'Juguera eléctrica')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Juguera eléctrica', 'hogar-3')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 13: Set de toallas -->
-    <div class="gift-card" data-gift-id="hogar-4">
-        <h3>Set de toallas de baño (6 piezas)</h3>
-        <p>Algodón egipcio, textura extra suave.</p>
-        <span class="gift-price">$65.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-4', 'Set de toallas de baño')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Set de toallas de baño')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-4">
+    <h3>Set de toallas de baño (6 piezas)</h3>
+    <p>Algodón egipcio, textura extra suave.</p>
+    <span class="gift-price">$65.000</span>
+    <span class="gift-code">HOG-TOALLAS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-4', 'Set de toallas de baño')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Set de toallas de baño', 'hogar-4')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 14: Juego de copas -->
-    <div class="gift-card" data-gift-id="hogar-5">
-        <h3>Juego de copas para vino (6 unidades)</h3>
-        <p>Elegantes, de cristal, para cenas románticas.</p>
-        <span class="gift-price">$45.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-5', 'Juego de copas para vino')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Juego de copas para vino')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-5">
+    <h3>Juego de copas para vino (6 unidades)</h3>
+    <p>Elegantes, de cristal, para cenas románticas.</p>
+    <span class="gift-price">$45.000</span>
+    <span class="gift-code">HOG-COPAS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-5', 'Juego de copas para vino')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Juego de copas para vino', 'hogar-5')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 15: Cafetera -->
-    <div class="gift-card" data-gift-id="hogar-6">
-        <h3>Cafetera italiana o prensa francesa</h3>
-        <p>De acero inoxidable, clásica y duradera.</p>
-        <span class="gift-price">$60.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-6', 'Cafetera italiana')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Cafetera italiana')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-6">
+    <h3>Cafetera italiana o prensa francesa</h3>
+    <p>De acero inoxidable, clásica y duradera.</p>
+    <span class="gift-price">$60.000</span>
+    <span class="gift-code">HOG-CAFETERA</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-6', 'Cafetera italiana')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Cafetera italiana', 'hogar-6')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 16: Set de utensilios -->
-    <div class="gift-card" data-gift-id="hogar-7">
-        <h3>Set de utensilios de cocina (10 piezas)</h3>
-        <p>Cucharones, espátulas y pinzas en acero y silicona.</p>
-        <span class="gift-price">$50.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-7', 'Set de utensilios de cocina')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Set de utensilios de cocina')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-7">
+    <h3>Set de utensilios de cocina (10 piezas)</h3>
+    <p>Cucharones, espátulas y pinzas en acero y silicona.</p>
+    <span class="gift-price">$50.000</span>
+    <span class="gift-code">HOG-UTENSILIOS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-7', 'Set de utensilios de cocina')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Set de utensilios de cocina', 'hogar-7')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 17: Plantas decorativas -->
-    <div class="gift-card" data-gift-id="hogar-8">
-        <h3>Plantas decorativas o maceteros</h3>
-        <p>Para dar vida y frescura al hogar.</p>
-        <span class="gift-price">$40.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-8', 'Plantas decorativas')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Plantas decorativas')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-8">
+    <h3>Plantas decorativas o maceteros</h3>
+    <p>Para dar vida y frescura al hogar.</p>
+    <span class="gift-price">$40.000</span>
+    <span class="gift-code">HOG-PLANTAS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-8', 'Plantas decorativas')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Plantas decorativas', 'hogar-8')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 18: Lámpara de pie -->
-    <div class="gift-card" data-gift-id="hogar-9">
-        <h3>Lámpara de pie moderna</h3>
-        <p>De madera o metal, aporta luz cálida.</p>
-        <span class="gift-price">$110.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-9', 'Lámpara de pie moderna')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Lámpara de pie moderna')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-9">
+    <h3>Lámpara de pie moderna</h3>
+    <p>De madera o metal, aporta luz cálida.</p>
+    <span class="gift-price">$110.000</span>
+    <span class="gift-code">HOG-LAMPARA</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-9', 'Lámpara de pie moderna')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Lámpara de pie moderna', 'hogar-9')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
 
-    <!-- Regalo 19: Juego de platos -->
-    <div class="gift-card" data-gift-id="hogar-10">
-        <h3>Juego de platos y bowls de cerámica</h3>
-        <p>Servicio artesanal para 4 personas, elegante.</p>
-        <span class="gift-price">$95.000</span>
-        <div class="gift-actions">
-            <button class="btn-reserve" onclick="reserveGift('hogar-10', 'Juego de platos de cerámica')">
-                Reservar
-            </button>
-            <button class="btn-bank" onclick="showBankModal('Juego de platos de cerámica')">
-                Ver Datos Bancarios
-            </button>
-        </div>
+<div class="gift-card" data-gift-id="hogar-10">
+    <h3>Juego de platos y bowls de cerámica</h3>
+    <p>Servicio artesanal para 4 personas, elegante.</p>
+    <span class="gift-price">$95.000</span>
+    <span class="gift-code">HOG-PLATOS</span>
+    <div class="gift-actions">
+        <button class="btn-reserve" onclick="reserveGift('hogar-10', 'Juego de platos de cerámica')">
+            Reservar
+        </button>
+        <button class="btn-bank" onclick="showBankModal('Juego de platos de cerámica', 'hogar-10')">
+            Ver Datos Bancarios
+        </button>
     </div>
+</div>
+
 </div>
 
                 <!-- Nota adicional / versículo -->
@@ -993,21 +1030,27 @@
     });
     </script>
     <!-- Modal Datos Bancarios -->
+<!-- Modal Datos Bancarios -->
 <div id="modalBank" class="modal-overlay">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal()">&times;</button>
         <h3>Datos para Transferencia</h3>
+        
+        <!-- Código de referencia dinámico -->
         <div id="bankData">
-   	    <p><strong>Nombre:</strong> Manuel Fernando Barraza Bórquez</p>
-   	    <p><strong>RUT:</strong> 19.933.447-6</p>
-   	    <p><strong>Banco:</strong> Mercado Pago</p>
-   	    <p><strong>Tipo de Cuenta:</strong> Cuenta Vista</p>
-   	    <p><strong>N° de Cuenta:</strong> 1097611524</p>
-   	    <p><strong>Email:</strong> manuelfrndo@gmail.com</p>
-	</div>
+            <p><strong>Nombre:</strong> Manuel Fernando Barraza Bórquez</p>
+            <p><strong>RUT:</strong> 19.933.447-6</p>
+            <p><strong>Banco:</strong> Mercado Pago</p>
+            <p><strong>Tipo de Cuenta:</strong> Cuenta Vista</p>
+            <p><strong>N° de Cuenta:</strong> 1097611524</p>
+            <p><strong>Email:</strong> manuelfrndo@gmail.com</p>
+        </div>
+        <div style="text-align: center; margin: 15px 0;"> <p class="gift-instruction">✅ Incluye este <strong>código</strong> en el mensaje de tu transferencia:</p> <span class="gift-code" style="margin: -10px 0;" id="giftCodeDisplay">CODIGO</span> </div>
+        
         <div class="bank-notice">
             <p>✓ Medio de pago sin comisión ni intereses adicionales</p>
         </div>
+        
         <button class="btn-copy" onclick="copyBankData()">📋 Copiar Datos</button>
         <p id="copyMessage" style="text-align: center; color: #4CAF50; margin-top: 10px; display: none;">
             ¡Datos copiados al portapapeles!
@@ -1015,12 +1058,43 @@
     </div>
 </div>
 <script>
+// Mapeo de códigos para cada regalo
+const giftCodes = {
+    // Experiencias
+    'exp-1': 'EXP-VOLCAN',
+    'exp-2': 'EXP-VALDES',
+    'exp-3': 'EXP-TERMAS',
+    'exp-4': 'EXP-CABANA',
+    'exp-5': 'EXP-KAYAK',
+    'exp-6': 'EXP-CERVEZA',
+    'exp-7': 'EXP-ALERCE',
+    'exp-8': 'EXP-FINSEM',
+    'exp-9': 'EXP-MARIDAJE',
+    // Hogar
+    'hogar-1': 'HOG-OLLAS',
+    'hogar-2': 'HOG-SABANAS',
+    'hogar-3': 'HOG-JUGUERA',
+    'hogar-4': 'HOG-TOALLAS',
+    'hogar-5': 'HOG-COPAS',
+    'hogar-6': 'HOG-CAFETERA',
+    'hogar-7': 'HOG-UTENSILIOS',
+    'hogar-8': 'HOG-PLANTAS',
+    'hogar-9': 'HOG-LAMPARA',
+    'hogar-10': 'HOG-PLATOS'
+};
+
+// Variable global para almacenar el código actual
+let currentGiftCode = '';
+
 // Función para mostrar el modal
-function showBankModal(giftName) {
+function showBankModal(giftName, giftId) {
+    currentGiftCode = giftCodes[giftId] || 'REGALO-001';
+    
+    // Mostrar el código en el modal
+    document.getElementById('giftCodeDisplay').textContent = currentGiftCode;
+    
     document.getElementById('modalBank').classList.add('active');
-    // Opcional: guardar qué regalo está consultando
     sessionStorage.setItem('currentGift', giftName);
-    // Marcar que vió los datos bancarios
     sessionStorage.setItem('viewedBankData', 'true');
 }
 
@@ -1029,13 +1103,11 @@ function closeModal() {
     document.getElementById('modalBank').classList.remove('active');
     document.getElementById('copyMessage').style.display = 'none';
     
-    // Si reservó y vio los datos bancarios, redirigir a sección gracias
     if (sessionStorage.getItem('viewedBankData') === 'true') {
         setTimeout(() => {
             document.getElementById('lista').scrollIntoView({ 
                 behavior: 'smooth' 
             });
-            // Limpiar el flag
             sessionStorage.removeItem('viewedBankData');
         }, 300);
     }
@@ -1048,9 +1120,10 @@ document.getElementById('modalBank').addEventListener('click', function(e) {
     }
 });
 
-// Función para copiar datos bancarios
+// Función para copiar datos bancarios con código
 function copyBankData() {
-    const bankData = `Manuel Fernando Barraza Bórquez
+    const bankData =     
+`Manuel Fernando Barraza Bórquez
 199334476
 Mercado Pago
 Cuenta Vista
@@ -1065,7 +1138,6 @@ manuelfrndo@gmail.com`;
     });
 }
 
-// Función para reservar un regalo
 // Función para reservar un regalo
 function reserveGift(giftId, giftName) {
     const card = document.querySelector(`[data-gift-id="${giftId}"]`);
@@ -1086,8 +1158,12 @@ function reserveGift(giftId, giftName) {
         // Guardar en localStorage
         localStorage.setItem(`gift_${giftId}`, 'reserved');
         
+        // Guardar el ID del regalo actual para obtener su código
+        sessionStorage.setItem('currentGiftId', giftId);
+        
         // Mostrar modal de datos bancarios
-        showBankModal(giftName);
+		showBankModal(giftName, giftId);
+
     }
 }
 
@@ -1106,8 +1182,6 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-</script>
-</body>
+</script></body>
 </html>
 <!-- FIN -->
-
